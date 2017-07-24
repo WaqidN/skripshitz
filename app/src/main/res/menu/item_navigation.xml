@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/navigation1"
+            android:checked="false"
+            android:icon="@mipmap/ic_home"
+            android:title="@string/Beranda" />
+        <item
+            android:id="@+id/navigation2"
+            android:checked="false"
+            android:icon="@mipmap/ic_laporan"
+            android:title="@string/Lap_user" />
+        <item
+            android:id="@+id/navigation22"
+            android:checked="false"
+            android:icon="@mipmap/ic_camera"
+            android:title="@string/Media" />
+        <item
+            android:id="@+id/navigation3"
+            android:checked="false"
+            android:icon="@mipmap/ic_profil"
+            android:title="@string/My_Profil" />
+
+
+    </group>
+
+
+    <item
+        android:id="@+id/navigasi_kategori_2"
+        android:title="@string/navigasi_kategori_2">
+        <menu>
+            <item
+                android:id="@+id/navigation4"
+                android:checked="false"
+                android:icon="@mipmap/ic_setting"
+                android:title="@string/Setting" />
+            <item
+                android:id="@+id/navigation5"
+                android:checked="false"
+                android:icon="@mipmap/ic_about"
+                android:title="@string/Bantuan" />
+            <item
+                android:id="@+id/navigation6"
+                android:checked="false"
+                android:icon="@mipmap/ic_logout"
+                android:title="@string/Logout"
+                />
+
+        </menu>
+    </item>
+
+</menu>

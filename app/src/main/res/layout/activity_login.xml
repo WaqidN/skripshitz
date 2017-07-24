@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abnormal.crimereport.activity.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/scane1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginBottom="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/username"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:drawableLeft="@mipmap/ic_user"
+            style="@style/custome_forml">
+            <requestFocus /></EditText>
+
+        <EditText
+            android:id="@+id/pass"
+            android:drawableLeft="@mipmap/ic_pass"
+            android:hint="Password"
+            android:inputType="textPassword"
+            style="@style/custome_forml"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/btn_login_bg"
+            android:text="Sign In"
+            android:textColor="@color/btn_login" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum mempunyai Akun?"
+                android:textSize="13dp" />
+            <TextView
+                android:id="@+id/sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textColor="#1E88E5"
+                android:textStyle="bold"
+                android:textIsSelectable="false"
+                android:textSize="13dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/text"
+                android:layout_toEndOf="@+id/text"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

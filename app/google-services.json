@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "877876480886",
+    "firebase_url": "https://crimereportadmin.firebaseio.com",
+    "project_id": "crimereportadmin",
+    "storage_bucket": "crimereportadmin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877876480886:android:9d39da6b3abdc4b9",
+        "android_client_info": {
+          "package_name": "com.example.abnormal.crimereport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877876480886-njoh0oe4krutfbn379dudopv3f82t5qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAopaQysvzHw9xeLcc3lmy3tIoBu2pfVzY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

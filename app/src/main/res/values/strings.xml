@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">CrimeReportAdmin</string>
+    <string name="openDrawer">Drawer dibuka</string>
+    <string name="closeDrawer">Drawer ditutup</string>
+    <string name="Beranda">Home</string>
+    <string name="Lap_user">Laporan</string>
+    <string name="Laporan">Laporan Masuk</string>
+    <string name="Lap_Proses">Laporan Proses</string>
+    <string name="Lap_Selesai">Laporan Selesai</string>
+    <string name="My_Profil">Edit User</string>
+    <string name="Media">Media</string>
+    <string name="navigasi_kategori_2">Sub Item Navigasi</string>
+    <string name="Setting">Pengaturan</string>
+    <string name="Bantuan">Bantuan</string>
+    <string name="Logout">Log Out</string>
+    <string name="Post">Post</string>
+    <string name="Edit_User">Edit User</string>
+    <string name="Lacak">Lacak</string>
+    <string name="one">Lap.Masuk</string>
+    <string name="two">Lap.Proses</string>
+    <string name="three">Lap.Selesai</string>
+    <string name="addfile">Add File</string>
+    <string name="send">Send</string>
+    <string name="sett">Setting</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="action_delete">Delete</string>
+</resources>

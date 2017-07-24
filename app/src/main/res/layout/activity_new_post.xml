@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    tools:context="com.example.abnormal.crimereport.activity.PostActivity">
+
+    <EditText
+        android:id="@+id/isiJudul"
+        style="@style/custom_forms"
+        android:hint="Judul"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/isiDesk"
+        style="@style/custom_forms"
+        android:layout_height="100dp"
+        android:hint="Deskripsi"
+        android:inputType="text"
+        android:layout_below="@+id/isiJudul"/>
+
+    <TextView
+        android:id="@+id/text_kategori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"
+        android:layout_below="@+id/isiDesk"
+        android:text="Kategori"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/kategoriPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_kategori"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="35dp">
+
+        <RadioButton
+            android:id="@+id/uncategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uncategories"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/berita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berita"
+            />
+        <RadioButton
+            android:id="@+id/tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tips"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/batalP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/kategoriPost"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/simpanP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publish"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/bg_main"
+        android:layout_alignTop="@+id/batalP"
+        android:layout_alignRight="@+id/isiDesk"
+        android:layout_alignEnd="@+id/isiDesk"/>
+
+    <TextView
+        android:id="@+id/text_addfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add File"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/kategoriPost"
+        android:layout_alignRight="@+id/addfile_Post"
+        android:layout_alignEnd="@+id/addfile_Post"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+
+    <ImageButton
+        android:id="@+id/addfile_Post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_alignTop="@+id/kategoriPost"
+        android:layout_alignRight="@+id/isiDesk"
+        android:layout_alignEnd="@+id/isiDesk" />
+
+
+
+</RelativeLayout>

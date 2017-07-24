@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.abnormal.crimereport">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SignActivity"
+            android:label="Register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DrawerAdmin"
+            android:label="Utama"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DrawerUser"
+            android:label="Register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NewReport"
+            android:label="Buat Lap."
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.SignFragOne" />
+        <activity android:name=".activity.SignFragTwo" />
+        <activity android:name=".activity.SignFragThree" />
+
+        <activity
+            android:name=".activity.ViewLaporan"
+            android:label="View Lap."
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PostActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EditProfil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LacakLaporan"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.LapPeosesActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.LapSelesaiActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/A_nav2"
+            android:checked="false"
+            android:icon="@mipmap/ic_lapmasuk"
+            android:title="@string/Laporan" />
+        <item
+            android:id="@+id/A_nav2_2"
+            android:checked="false"
+            android:icon="@mipmap/ic_lapproses"
+            android:title="@string/Lap_Proses" />
+        <item
+            android:id="@+id/A_nav2_3"
+            android:checked="false"
+            android:icon="@mipmap/ic_lapmasuk1"
+            android:title="@string/Lap_Selesai" />
+        <item
+            android:id="@+id/A_nav3"
+            android:checked="false"
+            android:icon="@mipmap/ic_pin"
+            android:title="@string/Post" />
+        <item
+            android:id="@+id/A_nav5"
+            android:checked="false"
+            android:icon="@mipmap/ic_profil"
+            android:title="@string/Edit_User" />
+        <item
+            android:id="@+id/A_nav6"
+            android:checked="false"
+            android:icon="@mipmap/ic_visible"
+            android:title="@string/Lacak" />
+        <item
+            android:id="@+id/navigasi_kategori_2"
+            android:title="@string/navigasi_kategori_2">
+            <menu>
+                <item
+                    android:id="@+id/A_nav7"
+                    android:checked="false"
+                    android:icon="@mipmap/ic_setting"
+                    android:title="@string/Setting" />
+                <item
+                    android:id="@+id/A_nav8"
+                    android:checked="false"
+                    android:icon="@mipmap/ic_about"
+                    android:title="@string/Bantuan" />
+                <item
+                    android:id="@+id/A_nav9"
+                    android:checked="false"
+                    android:icon="@mipmap/ic_logout"
+                    android:title="@string/Logout"
+                    />
+
+            </menu>
+        </item>
+
+
+    </group>
+
+
+</menu>

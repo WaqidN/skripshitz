@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abnormal.crimereport.activity.SignActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview4"
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/signEmail"
+                android:hint="ALamat Email"
+                android:inputType="textEmailAddress"
+                style="@style/custom_forms"
+                android:layout_marginTop="100dp"/>
+            <EditText
+                android:id="@+id/signNoHp"
+                android:layout_below="@+id/signEmail"
+                android:hint="Nomer Handphone"
+                android:inputType="phone"
+                style="@style/custom_forms"/>
+            <CheckBox
+                android:id="@+id/cekbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/signNoHp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:text="*Menerima Semua Kebijakan Dari Kami"/>
+
+            <Button
+                android:id="@+id/Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cekbox"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/btn_login_bg"
+                android:text="Register"
+                android:textSize="17dp"
+                android:textColor="@color/btn_login"/>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

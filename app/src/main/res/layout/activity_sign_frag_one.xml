@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abnormal.crimereport.activity.SignActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview2"
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/signUser"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                style="@style/custom_forms"
+                android:layout_marginTop="100dp"/>
+            <EditText
+                android:id="@+id/signPass"
+                android:layout_below="@+id/signUser"
+                android:hint="Password"
+                android:inputType="textPassword"
+                style="@style/custom_forms"/>
+            <EditText
+                android:id="@+id/signRePass"
+                android:layout_below="@+id/signPass"
+                android:hint="RePassword"
+                android:inputType="textPassword"
+                style="@style/custom_forms"/>
+            <Button
+                android:id="@+id/nextSign1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/signRePass"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/btn_login_bg"
+                android:text="Selanjutnya"
+                android:textSize="17dp"
+                android:textColor="@color/btn_login"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

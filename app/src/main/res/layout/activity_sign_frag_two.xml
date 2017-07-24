@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl2"
+    tools:context="com.example.abnormal.crimereport.activity.SignActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/signNik"
+                style="@style/custom_forms"
+                android:layout_marginTop="50dp"
+                android:hint="NIK"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/signNamaL"
+                style="@style/custom_forms"
+                android:layout_below="@+id/signNik"
+                android:hint="Nama Lengkap"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/SignAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@+id/signNamaL"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_dialog"
+                android:hint="Alamat"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp" />
+
+            <EditText
+                android:id="@+id/signTmptLahir"
+                style="@style/custom_forms"
+                android:layout_below="@+id/SignAlamat"
+                android:layout_marginTop="10dp"
+                android:hint="Tempat Lahir"
+                android:inputType="textPostalAddress" />
+
+            <TextView
+                android:id="@+id/signTglLahir"
+                android:layout_width="260dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/signTmptLahir"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_dialog"
+                android:hint="Tanggal Lahir"
+                android:inputType="date"
+                android:paddingBottom="8dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp" />
+
+            <Button
+                android:id="@+id/picDate1"
+                android:layout_width="38dp"
+                android:layout_height="44dp"
+                android:layout_alignEnd="@+id/signTmptLahir"
+                android:layout_alignRight="@+id/signTmptLahir"
+                android:layout_alignTop="@+id/signTglLahir"
+                android:background="#1E88E5"
+                android:drawableStart="@drawable/ic_down"
+                android:onClick="datePicker" />
+
+            <TextView
+                android:id="@+id/textJK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/picDate1"
+                android:layout_marginLeft="29dp"
+                android:layout_marginTop="20dp"
+                android:text="Jenis Kelamin"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/pilJK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textJK"
+                android:layout_alignTop="@+id/textJK"
+                android:layout_toRightOf="@+id/textJK"
+                android:layout_toEndOf="@+id/textJK" >
+
+                <RadioButton
+                    android:id="@+id/jkLk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Laki-Laki"
+                    android:textSize="15dp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/jkLPm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perempuan"
+                    android:textSize="15dp" />
+
+        </RadioGroup>
+
+            <Button
+                android:id="@+id/nextSign2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/signTglLahir"
+                android:layout_alignStart="@+id/signTglLahir"
+                android:layout_below="@+id/textJK"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/btn_login_bg"
+                android:text="Selanjutnya"
+                android:textColor="@color/btn_login"
+                android:textSize="17dp" />
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

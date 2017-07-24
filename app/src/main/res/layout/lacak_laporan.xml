@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abnormal.crimereport.activity.LacakLaporan">
+
+    <include android:id="@+id/toolbarLacak"
+        layout="@layout/layout_toolbar"/>
+
+    <TextView
+        android:id="@+id/textLacak"
+        android:layout_below="@+id/toolbarLacak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:text="Pencarian dengan kata kunci"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/lacak"
+        style="@style/custom_forms"
+        android:layout_below="@+id/textLacak"
+        android:layout_marginTop="20dp"/>
+    <RadioGroup
+        android:id="@+id/plhnPencarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lacak"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keyword"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web"/>
+        <RadioButton
+            android:id="@+id/noTlphn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No. Tlpn"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnLacak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_login_bg"
+        android:textColor="@color/btn_login"
+        android:text="Lacak"
+        android:layout_alignTop="@+id/plhnPencarian"
+        android:layout_alignRight="@+id/lacak"
+        android:layout_alignEnd="@+id/lacak" />
+
+</RelativeLayout>
