@@ -1,4 +1,4 @@
-package com.example.abnormal.crimereport.model.user_model;
+package com.example.abnormal.crimereport.model.userM;
 
 /**
  * Created by abnormal on 01/11/17.

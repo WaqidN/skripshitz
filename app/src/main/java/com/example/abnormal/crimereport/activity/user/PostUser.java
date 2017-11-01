@@ -18,7 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.model.PostView;
+import com.example.abnormal.crimereport.model.userM.Post_View;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -65,7 +65,7 @@ public class PostUser extends Fragment{
             @Override
             public void onResponse(JSONObject response) {
 
-                List<PostView> list = new ArrayList<>();
+                List<Post_View> listv = new ArrayList<>();
 
                 Log.e("data", response.toString());
 
@@ -74,12 +74,12 @@ public class PostUser extends Fragment{
 
                     for (int a = 0; a<jsonArray.length(); a++){
                         JSONObject jsonObject1 = jsonArray.getJSONObject(a);
-                        PostView post = new PostView();
-                        post.idPost = jsonObject1.getString("id");
-                        post.titlePost = jsonObject1.getString("post_title");
-                        post.contetPost = jsonObject1.getString("post_content");
-                        post.datePost = jsonObject1.getString("post_date");
-                        list.add(post);
+                        Post_View post = new Post_View();
+                        post.idPU = jsonObject1.getString("id");
+                        post.titlePU = jsonObject1.getString("post_title");
+                        post.contentPU = jsonObject1.getString("post_content");
+                        post.datePU = jsonObject1.getString("post_date");
+                        listv.add(post);
                     }
 
 
@@ -88,7 +88,7 @@ public class PostUser extends Fragment{
                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                SetAdapter adapter = new SetAdapter(list);
+                SetAdapter adapter = new SetAdapter(listv);
                 mRecyclerViewUser.setAdapter(adapter);
             }
 
@@ -106,8 +106,8 @@ public class PostUser extends Fragment{
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{
 
-        List<PostView> datanya;
-        SetAdapter(List<PostView> datanya){
+        List<Post_View> datanya;
+        SetAdapter(List<Post_View> datanya){
             this.datanya = datanya;
         }
 
@@ -118,10 +118,10 @@ public class PostUser extends Fragment{
             public Holder(View itemView) {
                 super(itemView);
 
-                judulnya = (TextView)itemView.findViewById(R.id.judulP);
-                deskripsi = (TextView)itemView.findViewById(R.id.isiB);
-                time = (TextView)itemView.findViewById(R.id.date);
-                idpotnya = (TextView)itemView.findViewById(R.id.idPost);
+                judulnya = (TextView)itemView.findViewById(R.id.judulUser);
+                deskripsi = (TextView)itemView.findViewById(R.id.isiUser);
+                time = (TextView)itemView.findViewById(R.id.dateUser);
+                idpotnya = (TextView)itemView.findViewById(R.id.idPostUser);
 
             }
 
@@ -129,7 +129,7 @@ public class PostUser extends Fragment{
 
         @Override
         public SetAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_row, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_card_view, parent, false);
             SetAdapter.Holder hol = new SetAdapter.Holder(v);
             return hol;
 
@@ -138,9 +138,9 @@ public class PostUser extends Fragment{
         @Override
         public void onBindViewHolder(SetAdapter.Holder holder, final int position) {
 
-            holder.judulnya.setText(datanya.get(position).titlePost);
-            holder.deskripsi.setText(datanya.get(position).contetPost);
-            holder.time.setText(datanya.get(position).datePost);
+            holder.judulnya.setText(datanya.get(position).titlePU);
+            holder.deskripsi.setText(datanya.get(position).contentPU);
+            holder.time.setText(datanya.get(position).datePU);
 
         }
 

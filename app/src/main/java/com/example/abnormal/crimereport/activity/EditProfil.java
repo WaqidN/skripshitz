@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -70,15 +69,17 @@ public class EditProfil extends Fragment {
         final RelativeLayout rl = (RelativeLayout) getActivity().findViewById(R.id.rl);
 
         Button btn = (Button) getActivity().findViewById(R.id.picDate);
-        btn.setOnClickListener(new View.OnClickListener() {
+        /*btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                DialogFragment dFragment = new DatePickerFragment();
-                dFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                *//*DialogFragment dFragment = new DatePickerFragment();
+                dFragment.show(getActivity().getFragmentManager(), "Date Picker");*//*
+
+                Toast.makeText(getContext(), "ini", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         username = (EditText) getActivity().findViewById(R.id.editUser);
         password = (EditText) getActivity().findViewById(R.id.editPass);
         nik = (EditText) getActivity().findViewById(R.id.editNik);
@@ -116,7 +117,7 @@ public class EditProfil extends Fragment {
             email.setText(jsonObject.getString("user_email"));
             no_tlpn.setText(jsonObject.getString("user_nohp"));
         }catch (Exception e){
-            Toast.makeText(getContext(), "error bro "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "error bro "+e.getMessage(), Toast.LENGTH_LONG).show();
         }
         //tempat_lahir = (EditText) findViewById(R.id.editTmptLahir);
     }
