@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:measureWithLargestChild="false">
+    android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbarB"
+        android:id="@+id/toolbarPost"
         layout="@layout/layout_toolbar" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/toolbarB"/>
+        android:layout_height="match_parent">
+
+        <include layout="@layout/content_post"/>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/newPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_add"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="27dp" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

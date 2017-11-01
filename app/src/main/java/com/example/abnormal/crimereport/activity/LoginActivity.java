@@ -20,6 +20,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
+import com.example.abnormal.crimereport.activity.admin.DrawerAdmin;
+import com.example.abnormal.crimereport.activity.user.DrawerUser;
+import com.example.abnormal.crimereport.pojo.Session;
 
 import org.json.JSONObject;
 
@@ -46,12 +49,14 @@ public class LoginActivity extends AppCompatActivity {
 
         password = (EditText)findViewById(R.id.pass);
 
-        if(sharedPreferences.getString("role",null) != null) {
-            if(sharedPreferences.getString("role",null).equals("admin")){
+        Session session = new Session(this);
+        if(session.sudahLogin() == true){
+            if(session.getRole().equals("admin")){
                 startActivity(new Intent(this,DrawerAdmin.class));
             }else{
                 startActivity(new Intent(this,DrawerUser.class));
             }
+            finish();
         }
         final ProgressDialog progressDialog = new ProgressDialog(this);
         btnSignIn.setOnClickListener(new View.OnClickListener(){
@@ -67,20 +72,22 @@ public class LoginActivity extends AppCompatActivity {
                         try{
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.getString("hasil").equals("sukses")){
-                                String role = jsonObject.getString("role");
+                                String role = jsonObject.getJSONObject("data").getString("user_status");
                                 if(role.equals("user")){
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("role","user");
-                                    editor.commit();
+                                    Session session = new Session(getApplicationContext());
+                                    session.tambahDataLogin(jsonObject.getJSONObject("data").toString()
+                                    ,role);
                                     Intent intent = new Intent(getApplicationContext(),DrawerUser.class);
                                     startActivity(intent);
+                                    finish();
                                 }else{
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("role","admin");
-                                    editor.commit();
+                                    Session session = new Session(getApplicationContext());
+                                    session.tambahDataLogin(jsonObject.getJSONObject("data").toString(),
+                                            role);
                                     Intent intent = new Intent(getApplicationContext(),DrawerAdmin.class);
                                     startActivity(intent);
                                 }
+
                             }else{
                                 Toast.makeText(LoginActivity.this, "login gagal", Toast.LENGTH_SHORT).show();
                             }

@@ -5,14 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_drawer_admin">
-
-
+    tools:mContext="info.androidhive.gmail.activity.MainActivity"
+    tools:showIn="@layout/user_drawer_activity">
     <FrameLayout
-        android:id="@+id/framelayout"
+        android:id="@+id/framelayoutUser"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
-
-
+        android:layout_height="match_parent"></FrameLayout>
 </RelativeLayout>

@@ -3,36 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerAdmin"
+    android:id="@+id/drawerUser"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.admin.DrawerAdmin">
+    tools:context="com.example.abnormal.crimereport.activity.user.DrawerUser">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:measureWithLargestChild="false"
-        android:orientation="vertical">
+        android:measureWithLargestChild="false">
 
+        <include
+            layout="@layout/user_app_bar"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    </RelativeLayout>
 
-            <include layout="@layout/app_bar_main"/>
-
-
-        </RelativeLayout>
-
-    </LinearLayout>
 
     <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_viewAdmin"
+        android:id="@+id/navigation_viewUser"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/layout_header"
-        app:menu="@menu/item_admin"/>
+        app:menu="@menu/item_navigation_user" />
+
 
 </android.support.v4.widget.DrawerLayout>

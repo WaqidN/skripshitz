@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abnormal.crimereport.activity.LacakLaporan">
+    tools:context="com.example.abnormal.crimereport.activity.admin.LacakLaporan">
 
     <include android:id="@+id/toolbarLacak"
         layout="@layout/layout_toolbar"/>
@@ -37,7 +37,7 @@
             android:id="@+id/keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keyword"
+            android:text="Email"
             android:checked="true"/>
         <RadioButton
             android:id="@+id/web"
@@ -61,5 +61,20 @@
         android:layout_alignTop="@+id/plhnPencarian"
         android:layout_alignRight="@+id/lacak"
         android:layout_alignEnd="@+id/lacak" />
+
+    <LinearLayout
+        android:layout_below="@+id/btnLacak"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

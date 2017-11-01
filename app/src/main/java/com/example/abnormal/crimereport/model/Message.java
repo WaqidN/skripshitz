@@ -3,25 +3,33 @@ package com.example.abnormal.crimereport.model;
 
 
 public class Message {
-    private int id;
-    private String from;
-    private String subject;
-    private String message;
-    private String timestamp;
-    private String picture;
-    private boolean isImportant;
-    private boolean isRead;
-    private int color = -1;
 
-    public Message() {
+    public String getIdnya() {
+        return idnya;
     }
 
-    public int getId() {
-        return id;
+    public void setIdnya(String idnya) {
+        this.idnya = idnya;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesk() {
+        return desk;
     }
 
     public String getFrom() {
@@ -32,59 +40,17 @@ public class Message {
         this.from = from;
     }
 
-    public String getSubject() {
-        return subject;
+    public void setDesk(String desk) {
+        this.desk = desk;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public String getGetTimestamp() {
+        return getTimestamp;
     }
 
-    public String getMessage() {
-        return message;
+    public void setGetTimestamp(String getTimestamp) {
+        this.getTimestamp = getTimestamp;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public boolean isImportant() {
-        return isImportant;
-    }
-
-    public void setImportant(boolean important) {
-        isImportant = important;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(boolean read) {
-        isRead = read;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
-    }
+    public String idnya,nama, title,desk,getTimestamp,from,email,website,nomor_telpon,status;
 }

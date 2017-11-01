@@ -1,4 +1,4 @@
-package com.example.abnormal.crimereport.activity;
+package com.example.abnormal.crimereport.activity.admin;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

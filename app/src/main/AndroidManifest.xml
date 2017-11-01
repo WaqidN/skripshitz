@@ -24,16 +24,16 @@
             android:label="Register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.DrawerAdmin"
+            android:name=".activity.admin.DrawerAdmin"
             android:label="Utama"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.DrawerUser"
-            android:label="Register"
+            android:name=".activity.user.DrawerUser"
+            android:label="Utama"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.NewReport"
-            android:label="Buat Lap."
+            android:label="Buat Laporan"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".activity.SignFragOne" />
@@ -41,26 +41,40 @@
         <activity android:name=".activity.SignFragThree" />
 
         <activity
-            android:name=".activity.ViewLaporan"
+            android:name=".activity.admin.ViewLaporan"
             android:label="View Lap."
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.PostActivity"
+            android:name=".activity.admin.PostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EditProfil"
+            android:label="Edit Profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.LacakLaporan"
+            android:name=".activity.admin.EditLaporan"
+            android:label="Edit Laporan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.LacakLaporan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.LapProsesActivity"
+            android:label="Proses Laporan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.ViewLapSelesai"
+            android:label="Laporan Selesai"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.LapSelesaiActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".activity.LapPeosesActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activity.LapSelesaiActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.admin.LapMasuk"
+            android:label="Laporan Masuk"
+            android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
     </application>
 
 </manifest>

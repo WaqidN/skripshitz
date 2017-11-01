@@ -1,25 +1,22 @@
-package com.example.abnormal.crimereport.activity;
+package com.example.abnormal.crimereport.activity.user;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.adapter.RecyclerViewAdapter;
-import com.example.abnormal.crimereport.model.Recycler;
-
-import java.util.ArrayList;
+import com.example.abnormal.crimereport.activity.EditProfil;
+import com.example.abnormal.crimereport.activity.LoginActivity;
 
 /**
  * Created by abnormal on 20/07/17.
@@ -39,27 +36,16 @@ public class DrawerUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawer_user);
+        setContentView(R.layout.user_drawer_activity);
 
         toolbar = (Toolbar) findViewById(R.id.toolbarUser);
+        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newLap);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction     = fragmentManager.beginTransaction();
+        transaction.replace(R.id.framelayoutUser,new PostUser());
+        transaction.commit();
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent newReport = new Intent(DrawerUser.this,NewReport.class);
-                startActivity(newReport);
-            }
-        });
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.view_postUser);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RecyclerViewAdapter(getDataSet());
-        mRecyclerView.setAdapter(mAdapter);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_viewUser);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -67,6 +53,9 @@ public class DrawerUser extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                FragmentManager     fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction     = fragmentManager.beginTransaction();
 
                 if (menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
@@ -76,11 +65,10 @@ public class DrawerUser extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
 
                     case R.id.navigation1:
-                        Intent brnda = new Intent(DrawerUser.this, DrawerUser.class );
-                        startActivity(brnda);
+                        transaction.replace(R.id.framelayoutUser, new PostUser()).addToBackStack(null);
                         return true;
                     case R.id.navigation2:
-                        Intent laporan = new Intent(DrawerUser.this, DrawerUser.class);
+                        Intent laporan = new Intent(DrawerUser.this, LaporanUser.class);
                         startActivity(laporan);
                         return true;
                     case R.id.navigation3:
@@ -116,27 +104,7 @@ public class DrawerUser extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ((RecyclerViewAdapter) mAdapter).setOnItemClickListener(new RecyclerViewAdapter
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Log.i(LOG_TAG, " Clicked on Item " + position);
-            }
-        });
-    }
 
-    private ArrayList<Recycler> getDataSet() {
-        ArrayList results = new ArrayList<Recycler>();
-        for (int index = 0; index < 20; index++) {
-            Recycler obj = new Recycler("Some Primary Text " + index,
-                    "Secondary " + index);
-            results.add(index, obj);
-        }
-        return results;
-    }
 
 
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
-    tools:context="com.example.abnormal.crimereport.activity.PostActivity">
+    tools:context="com.example.abnormal.crimereport.activity.admin.PostActivity">
 
     <EditText
         android:id="@+id/isiJudul"
@@ -25,62 +25,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="30dp"
         android:layout_below="@+id/isiDesk"
         android:text="Kategori"
         android:textSize="15dp"
         android:textStyle="bold"/>
 
     <RadioGroup
-        android:id="@+id/kategoriPost"
+        android:id="@+id/kategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_kategori"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="35dp">
+        android:layout_marginLeft="30dp">
 
-        <RadioButton
-            android:id="@+id/uncategories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Uncategories"
-            android:checked="true"/>
         <RadioButton
             android:id="@+id/berita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berita"
-            />
+            android:checked="true"
+            android:text="Berita"/>
         <RadioButton
-            android:id="@+id/tips"
+            android:id="@+id/Tips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tips"/>
-
+        <RadioButton
+            android:id="@+id/uncategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uncategories"/>
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/batalP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Batal"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/kategoriPost"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/simpanP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Publish"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/bg_main"
-        android:layout_alignTop="@+id/batalP"
-        android:layout_alignRight="@+id/isiDesk"
-        android:layout_alignEnd="@+id/isiDesk"/>
 
     <TextView
         android:id="@+id/text_addfile"
@@ -89,23 +63,49 @@
         android:text="Add File"
         android:textSize="15dp"
         android:textStyle="bold"
-        android:layout_above="@+id/kategoriPost"
-        android:layout_alignRight="@+id/addfile_Post"
-        android:layout_alignEnd="@+id/addfile_Post"
-        android:layout_marginRight="11dp"
-        android:layout_marginEnd="11dp" />
+        android:layout_above="@+id/kategori"
+        android:layout_alignLeft="@+id/simpanP"
+        android:layout_alignStart="@+id/simpanP"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp" />
 
     <ImageButton
         android:id="@+id/addfile_Post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_alignTop="@+id/kategoriPost"
-        android:layout_alignRight="@+id/isiDesk"
-        android:layout_alignEnd="@+id/isiDesk" />
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/text_addfile"
+        android:layout_alignRight="@+id/text_addfile"
+        android:layout_alignEnd="@+id/text_addfile" />
 
+    <TextView
+        android:id="@+id/batalP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_below="@+id/kategori"
+        android:layout_alignRight="@+id/kategori"
+        android:layout_alignEnd="@+id/kategori"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="11dp" />
 
+    <TextView
+        android:id="@+id/simpanP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="@color/bg_main"
+        android:layout_alignBaseline="@+id/batalP"
+        android:layout_alignBottom="@+id/batalP"
+        android:layout_toRightOf="@+id/batalP"
+        android:layout_toEndOf="@+id/batalP"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp" />
 
 </RelativeLayout>

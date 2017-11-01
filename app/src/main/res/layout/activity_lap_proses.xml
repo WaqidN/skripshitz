@@ -6,14 +6,14 @@
     android:layout_height="match_parent">
 
         <include
-            android:id="@+id/toolbarAdmin"
+            android:id="@+id/toolbarProses"
             layout="@layout/layout_toolbar" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include layout="@layout/content_main"/>
+            <include layout="@layout/content_proses"/>
 
 
         </RelativeLayout>

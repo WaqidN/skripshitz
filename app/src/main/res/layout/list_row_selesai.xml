@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idnya"
+        android:id="@+id/ids"
         android:visibility="invisible"/>
 
     <LinearLayout
@@ -28,7 +28,7 @@
 
 
         <TextView
-            android:id="@+id/from"
+            android:id="@+id/froms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -38,7 +38,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_primary"
+            android:id="@+id/txt_primarys"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -48,7 +48,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_secondary"
+            android:id="@+id/txt_secondarys"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -107,7 +107,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/timestamp"
+        android:id="@+id/timestamps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
