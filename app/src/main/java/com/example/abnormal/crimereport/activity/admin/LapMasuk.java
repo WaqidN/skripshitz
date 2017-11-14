@@ -22,7 +22,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.activity.NewReport;
 import com.example.abnormal.crimereport.helper.DividerItemDecoration;
 import com.example.abnormal.crimereport.model.Message;
 
@@ -62,6 +61,8 @@ public class LapMasuk extends Fragment{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
 
+        getActivity().setTitle("Lap.Masuk");
+
         swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_refresh_layout);
 
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.newLap);
@@ -71,6 +72,7 @@ public class LapMasuk extends Fragment{
 
                 Intent i = new Intent(getContext(), NewReport.class);
                 startActivity(i);
+                getActivity().finish();
             }
         });
 
@@ -100,6 +102,7 @@ public class LapMasuk extends Fragment{
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Message ms = new Message();
                         ms.idnya = jsonObject.getString("id");
+                        ms.pelaku = jsonObject.getString("l_nama");
                         ms.nama  = jsonObject.getString("user_username");
                         ms.title = jsonObject.getString("l_title");
                         ms.desk  = jsonObject.getString("l_des");
@@ -107,6 +110,7 @@ public class LapMasuk extends Fragment{
                         ms.nomor_telpon = jsonObject.getString("l_nohp");
                         ms.email = jsonObject.getString("l_email");
                         ms.website = jsonObject.getString("l_website");
+                        ms.pict = jsonObject.getString("l_file");
                         ms.status = jsonObject.getString("l_status");
                         list.add(ms);
                     }
@@ -130,36 +134,24 @@ public class LapMasuk extends Fragment{
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{
 
-        private List<Message> datanya;
+        List<Message> datanya;
 
         SetAdapter(List<Message> datanya){
             this.datanya = datanya;
         }
 
-        public SetAdapter(LapMasuk lapMasuk, List<Message> messageList){
-
-        }
-
         class Holder extends RecyclerView.ViewHolder{
 
-            TextView desk,nama,title,time, idnya;
+            TextView desknya,namanya,titlenya,timenya, idnya;
 
             public Holder(View itemView) {
                 super(itemView);
 
-                nama = (TextView)itemView.findViewById(R.id.from);
-                title = (TextView)itemView.findViewById(R.id.txt_primary);
-                desk = (TextView)itemView.findViewById(R.id.txt_secondary);
-                time = (TextView)itemView.findViewById(R.id.timestamp);
-                idnya = (TextView)itemView.findViewById(R.id.idnya);
+                namanya = (TextView)itemView.findViewById(R.id.from);
+                titlenya = (TextView)itemView.findViewById(R.id.txt_primary);
+                desknya = (TextView)itemView.findViewById(R.id.txt_secondary);
+                timenya = (TextView)itemView.findViewById(R.id.timestamp);
 
-
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
             }
         }
 
@@ -174,24 +166,27 @@ public class LapMasuk extends Fragment{
         @Override
         public void onBindViewHolder(SetAdapter.Holder holder, final int position) {
 
-            holder.nama.setText(datanya.get(position).nama);
-            holder.title.setText(datanya.get(position).title);
-            holder.desk.setText(datanya.get(position).desk);
-            holder.time.setText(datanya.get(position).getTimestamp);
-            holder.idnya.setText(datanya.get(position).idnya);
+            holder.namanya.setText(datanya.get(position).nama);
+            holder.titlenya.setText(datanya.get(position).title);
+            holder.desknya.setText(datanya.get(position).desk);
+            holder.timenya.setText(datanya.get(position).getTimestamp);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent cklik =  new Intent(getContext(), EditLaporan.class);
-                    cklik.putExtra("idnya", datanya.get(position).idnya);
-                    cklik.putExtra("email", datanya.get(position).email);
-                    cklik.putExtra("website", datanya.get(position).website);
-                    cklik.putExtra("nohp", datanya.get(position).nomor_telpon);
-                    cklik.putExtra("judul", datanya.get(position).title);
-                    cklik.putExtra("ket", datanya.get(position).desk);
-                    cklik.putExtra("status", datanya.get(position).status);
-                    startActivity(cklik);
 
+                    Intent cklik =  new Intent(getActivity(), EditLaporan.class);
+                    Bundle extras = new Bundle();
+                    extras.putString("idnya", datanya.get(position).idnya);
+                    extras.putString("namapelaku",datanya.get(position).pelaku);
+                    extras.putString("email", datanya.get(position).email);
+                    extras.putString("website", datanya.get(position).website);
+                    extras.putString("nohp", datanya.get(position).nomor_telpon);
+                    extras.putString("judul", datanya.get(position).title);
+                    extras.putString("ket", datanya.get(position).desk);
+                    extras.putString("status", datanya.get(position).status);
+                    extras.putString("pict", datanya.get(position).pict);
+                    cklik.putExtras(extras);
+                    startActivity(cklik);
                 }
             });
         }

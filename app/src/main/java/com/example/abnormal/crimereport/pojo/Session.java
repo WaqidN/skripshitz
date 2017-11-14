@@ -16,6 +16,8 @@ public class Session {
         this.context            = context;
         this.sharedPreferences  =  context.getSharedPreferences("akun",Context.MODE_APPEND);
     }
+
+
     public void tambahDataLogin(String data,String role){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("data"         ,data);

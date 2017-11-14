@@ -1,4 +1,4 @@
-package com.example.abnormal.crimereport.activity;
+package com.example.abnormal.crimereport.activity.user;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,29 +12,35 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
-import com.example.abnormal.crimereport.activity.admin.DrawerAdmin;
 import com.example.abnormal.crimereport.pojo.Session;
 
-public class NewReport extends ActionBarActivity {
+/**
+ * Created by abnormal on 02/11/17.
+ */
+
+public class NewLapUser extends ActionBarActivity {
 
     private Toolbar toolbar;
-    private EditText email,web,no,judul,keteragan;
+    private EditText email,web,no,judul,keteragan,nama;
     private Bitmap bitmap;
     private String namaGambar;
     private Uri dataGambar;
+    private TextView tmplPict;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_report);
+        setContentView(R.layout.user_new_lap);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
 
+        nama    = (EditText) findViewById(R.id.nr1);
         email   = (EditText)findViewById(R.id.nr2);
         web     = (EditText)findViewById(R.id.nr3);
         no      = (EditText)findViewById(R.id.nr4);
@@ -68,7 +74,8 @@ public class NewReport extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
         try{
             bitmap      = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
-            Toast.makeText(this, getFileName(data.getData()), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, getFileName(data.getData()), Toast.LENGTH_SHORT).show();
+            tmplPict.setText(getFileName(data.getData()));
             namaGambar  = getFileName(data.getData());
             dataGambar  = data.getData();
         }catch (Exception e){
@@ -94,28 +101,35 @@ public class NewReport extends ActionBarActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                Toast.makeText(getApplicationContext(), "upload gambar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "upload gambar", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 String iduser = new Session(getApplicationContext()).getid();
-                return new Url().uploadDocument(dataGambar.toString(),
-                        getApplicationContext(),dataGambar,iduser,email.getText().toString(),
-                        web.getText().toString(),no.getText().toString(),namaGambar,
-                        judul.getText().toString(),keteragan.getText().toString());
-            }
+                if(dataGambar != null){
+                    return new Url().uploadDocument(dataGambar.toString(),
+                            getApplicationContext(),dataGambar,iduser,nama.getText().toString(),email.getText().toString(),
+                            web.getText().toString(),no.getText().toString(),namaGambar,
+                            judul.getText().toString(),keteragan.getText().toString());
+
+                }else {
+                    return new Url().uploadDocument("",
+                            getApplicationContext(), null, iduser, nama.getText().toString(), email.getText().toString(),
+                            web.getText().toString(), no.getText().toString(), namaGambar,
+                            judul.getText().toString(), keteragan.getText().toString());
+                    }
+                }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Intent hasil = new Intent(NewReport.this, DrawerAdmin.class);
+                Intent hasil = new Intent(NewLapUser.this, DrawerUser.class);
                 startActivity(hasil);
-                Toast.makeText(NewReport.this, "hasil "+s, Toast.LENGTH_SHORT).show();
+                finish();
+                Toast.makeText(NewLapUser.this, "hasil "+s, Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }
-
 }
-

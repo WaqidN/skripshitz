@@ -3,9 +3,9 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -57,10 +57,12 @@ public class LapProsesActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        toolbarproses = (Toolbar) getActivity().findViewById(R.id.toolbarProses);
+        /*toolbarproses = (Toolbar) getActivity().findViewById(R.id.toolbarProses);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarproses);
-
+*/
         requestQueue = Volley.newRequestQueue(getContext());
+
+        getActivity().setTitle("Proses.Lap");
 
         recyclerView1 = (RecyclerView)getActivity().findViewById(R.id.recycler_viewp);
         recyclerView1.setHasFixedSize(true);
@@ -71,6 +73,16 @@ public class LapProsesActivity extends Fragment {
 
         mswipeRefreshLayout = (SwipeRefreshLayout)getActivity().findViewById(R.id.swipe_refresh_layoutp);
 
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.newLap);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getContext(), NewReport.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         ambildatanya();
 
@@ -96,7 +108,8 @@ public class LapProsesActivity extends Fragment {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(a);
                         MProses proses = new MProses();
                         proses.id = jsonObject1.getString("id");
-                        proses.namap = jsonObject1.getString("l_nama");
+                        proses.pelakup = jsonObject1.getString("l_nama");
+                        proses.namap = jsonObject1.getString("user_username");
                         proses.titlep = jsonObject1.getString("l_title");
                         proses.deskp = jsonObject1.getString("l_des");
                         proses.getTimestampp = jsonObject1.getString("l_date");
@@ -104,6 +117,7 @@ public class LapProsesActivity extends Fragment {
                         proses.emailp = jsonObject1.getString("l_email");
                         proses.websitep = jsonObject1.getString("l_website");
                         proses.statusp = jsonObject1.getString("l_status");
+                        proses.pictp = jsonObject1.getString("l_file");
                         list.add(proses);
                     }
 
@@ -184,13 +198,16 @@ public class LapProsesActivity extends Fragment {
                     Intent clik = new Intent(getContext(), ViewLaporan.class);
 
                     clik.putExtra("id", datanya.get(position).id);
+                    clik.putExtra("pelakunya", datanya.get(position).pelakup);
                     clik.putExtra("emailp", datanya.get(position).emailp);
                     clik.putExtra("websitep", datanya.get(position).websitep);
                     clik.putExtra("nohpp", datanya.get(position).nohp);
                     clik.putExtra("judulp", datanya.get(position).titlep);
                     clik.putExtra("ketp", datanya.get(position).deskp);
                     clik.putExtra("statusp", datanya.get(position).statusp);
+                    clik.putExtra("pictnya", datanya.get(position).pictp);
                     startActivity(clik);
+                    //getActivity().finish();
                 }
             });
 

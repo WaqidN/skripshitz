@@ -11,7 +11,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="fill_parent"
-        android:layout_height="450dp"
+        android:layout_height="470dp"
         android:layout_below="@+id/toolbar1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -23,7 +23,14 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/editr1"
+                android:hint="Nama"
+                android:inputType="textEmailAddress"
+                style="@style/custom_forms"/>
+
+            <EditText
                 android:id="@+id/editr2"
+                android:layout_below="@id/editr1"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
@@ -73,6 +80,14 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tmpilG"
+                android:layout_below="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_add"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"/>
 
         </RelativeLayout>
 

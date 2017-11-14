@@ -3,9 +3,9 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,10 +55,12 @@ public class LapSelesaiActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        toolbarSelesai = (Toolbar) getActivity().findViewById(R.id.toolbarSelesai);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarSelesai);
+       /* toolbarSelesai = (Toolbar) getActivity().findViewById(R.id.toolbarSelesai);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarSelesai);*/
 
         requestQueue = Volley.newRequestQueue(getContext());
+
+        getActivity().setTitle("Lap.Selesai");
 
         recyclerView2 = (RecyclerView)getActivity().findViewById(R.id.recycler_views);
         recyclerView2.setHasFixedSize(true);
@@ -69,6 +71,16 @@ public class LapSelesaiActivity extends Fragment {
 
         sswipeRefreshLayout = (SwipeRefreshLayout)getActivity().findViewById(R.id.swipe_refresh_layouts);
 
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.newLap);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getContext(), NewReport.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         ambildatanya();
 
@@ -92,7 +104,8 @@ public class LapSelesaiActivity extends Fragment {
 
                         MSelesai selesai = new MSelesai();
                         selesai.ids = jsonObject1.getString("id");
-                        selesai.namas = jsonObject1.getString("l_nama");
+                        selesai.namas = jsonObject1.getString("user_username");
+                        selesai.pelakus = jsonObject1.getString("l_nama");
                         selesai.titles = jsonObject1.getString("l_title");
                         selesai.desks = jsonObject1.getString("l_des");
                         selesai.getTimestamps = jsonObject1.getString("l_date");
@@ -100,6 +113,7 @@ public class LapSelesaiActivity extends Fragment {
                         selesai.emails = jsonObject1.getString("l_email");
                         selesai.websites = jsonObject1.getString("l_website");
                         selesai.statuss = jsonObject1.getString("l_status");
+                        selesai.picts = jsonObject1.getString("l_file");
                         lists.add(selesai);
                     }
 
@@ -180,13 +194,14 @@ public class LapSelesaiActivity extends Fragment {
                     Intent views = new Intent(getContext(), ViewLapSelesai.class);
 
                     views.putExtra("id", dataSelesai.get(position).ids);
+                    views.putExtra("pelakunya", dataSelesai.get(position).pelakus);
                     views.putExtra("emails", dataSelesai.get(position).emails);
                     views.putExtra("websites", dataSelesai.get(position).websites);
                     views.putExtra("nohps", dataSelesai.get(position).nohs);
                     views.putExtra("juduls", dataSelesai.get(position).titles);
                     views.putExtra("kets", dataSelesai.get(position).desks);
                     views.putExtra("statuss", dataSelesai.get(position).statuss);
-
+                    views.putExtra("picts",dataSelesai.get(position).picts);
                     startActivity(views);
                 }
             });

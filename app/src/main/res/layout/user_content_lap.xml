@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_lap_proses">
+    tools:mContext="info.androidhive.gmail.activity.MainActivity"
+    tools:showIn="@layout/activity_lap_masuk">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layoutp"
+        android:id="@+id/swipe_refresh_UL"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_viewp"
+            android:id="@+id/recycler_view_UL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
@@ -21,7 +22,7 @@
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/newLap"
+        android:id="@+id/newLapUL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_dialog_email"

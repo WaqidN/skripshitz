@@ -87,4 +87,22 @@ public class MProses {
     }
 
     public String id,namap, titlep,deskp,getTimestampp,fromp,emailp,websitep,nohp,statusp;
+
+    public String getPelakup() {
+        return pelakup;
+    }
+
+    public void setPelakup(String pelakup) {
+        this.pelakup = pelakup;
+    }
+
+    public String getPictp() {
+        return pictp;
+    }
+
+    public void setPictp(String pictp) {
+        this.pictp = pictp;
+    }
+
+    public String pelakup, pictp;
 }

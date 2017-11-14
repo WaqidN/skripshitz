@@ -1,24 +1,26 @@
 package com.example.abnormal.crimereport.activity.admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.activity.EditProfil;
 import com.example.abnormal.crimereport.activity.LoginActivity;
+import com.example.abnormal.crimereport.activity.user.PostUser;
 
-public class DrawerAdmin extends AppCompatActivity  {
+public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     private Toolbar toolbaradmin;
     private NavigationView navigationViewAdmin;
@@ -32,99 +34,120 @@ public class DrawerAdmin extends AppCompatActivity  {
         toolbaradmin = (Toolbar) findViewById(R.id.toolbarAdmin);
         setSupportActionBar(toolbaradmin);
 
-
-         FragmentManager fragmentManager = getSupportFragmentManager();
-         FragmentTransaction transaction     = fragmentManager.beginTransaction();
-         transaction.replace(R.id.framelayout, new LapMasuk());
-         transaction.commit();
-
-
-        navigationViewAdmin = (NavigationView) findViewById(R.id.navigation_viewAdmin);
-        navigationViewAdmin.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                FragmentManager     fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction     = fragmentManager.beginTransaction();
-
-                if (menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
-
-                drawerLayoutAdmin.closeDrawers();
-
-                switch (menuItem.getItemId()) {
-
-                    case R.id.A_nav2:
-                        transaction.replace(R.id.framelayout,new LapMasuk()).addToBackStack(null);
-                        transaction.commit();
-                        return true;
-
-                    case R.id.A_nav2_2:
-                        //getSupportActionBar().setTitle("Proses Laporan");
-                        transaction.replace(R.id.framelayout,new LapProsesActivity()).addToBackStack(null);
-                        transaction.commit();
-                        return true;
-
-                    case R.id.A_nav2_3:
-                        //getSupportActionBar().setTitle("Laporan Selesai");
-                        transaction.replace(R.id.framelayout,new LapSelesaiActivity()).addToBackStack(null);
-                        transaction.commit();
-                        return true;
-
-                    case R.id.A_nav3:
-                        transaction.replace(R.id.framelayout,new PostActivity()).addToBackStack(null);
-                        transaction.commit();
-                        return true;
-
-                    case R.id.A_nav5:
-                        //getSupportActionBar().setTitle("Edit Profile");
-                        transaction.replace(R.id.framelayout,new EditProfil()).addToBackStack(null);
-                        transaction.commit();
-                        return true;
-
-                    case R.id.A_nav6:
-                        Intent lacaklap = new Intent(DrawerAdmin.this, LacakLaporan.class);
-                        startActivity(lacaklap);
-                        return true;
-
-                    case R.id.A_nav7:
-                        Toast.makeText(getApplicationContext(), "Pengaturan telah dipilih", Toast.LENGTH_SHORT).show();
-                        return true;
-
-                    case R.id.A_nav8:
-                        Toast.makeText(getApplicationContext(), "Bantuan telah dipilih", Toast.LENGTH_SHORT).show();
-                        return true;
-
-                    case R.id.A_nav9:
-                        SharedPreferences sharedPreferences = getSharedPreferences("akun",MODE_APPEND);
-                        sharedPreferences.edit().clear().commit();
-                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                        finish();
-                        return true;
-
-                    default:
-                        return true;
-                }
-            }
-        });
-
         drawerLayoutAdmin = (DrawerLayout) findViewById(R.id.drawerAdmin);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayoutAdmin, toolbaradmin, R.string.openDrawer, R.string.closeDrawer) {
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-        };
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayoutAdmin, toolbaradmin, R.string.openDrawer, R.string.closeDrawer);
+        drawerLayoutAdmin.addDrawerListener(toggle);
+        toggle.syncState();
 
-        drawerLayoutAdmin.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_viewAdmin);
+        navigationView.setNavigationItemSelectedListener(this);
 
+        displaySelectedScreen(R.id.A_nav2);
+    }
+
+
+
+    public void logOut() {
+        SharedPreferences sharedPreferences = getSharedPreferences("akun",MODE_APPEND);
+        sharedPreferences.edit().clear().commit();
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected ( MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.A_nav9:
+                logOut();
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerAdmin);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void displaySelectedScreen(int itemId) {
+
+        //creating fragment object
+        Fragment fragment = null;
+
+        //initializing the fragment object which is selected
+        switch (itemId) {
+            case R.id.A_nav2:
+                fragment = new LapMasuk();
+                break;
+            case R.id.A_nav2_2:
+                fragment = new LapProsesActivity();
+                break;
+            case R.id.A_nav2_3:
+                fragment = new LapSelesaiActivity();
+                break;
+            case R.id.A_nav3:
+                fragment = new PostUser();
+                break;
+            case R.id.A_nav5:
+                fragment = new EditProfile();
+                break;
+            case R.id.A_nav6:
+                startActivity(new Intent(DrawerAdmin.this, LacakLaporan.class));
+                break;
+            case R.id.A_nav7:
+                //startActivity(new Intent(AdminActivity.this, AboutActivity.class));
+                break;
+            case R.id.A_nav8:
+                //startActivity(new Intent(AdminActivity.this, AboutActivity.class));
+                break;
+            case R.id.A_nav9:
+                logOut();
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.framelayout, fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerAdmin);
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void keluarApp() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("Keluar dari aplikasi ?");
+        alertBuilder.setCancelable(false)
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DrawerAdmin.this.finish();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        displaySelectedScreen(item.getItemId());
+        return true;
     }
 }

@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbarPost"
-        layout="@layout/layout_toolbar" />
+        android:id="@+id/toolbarAdmin"
+        layout="@layout/layout_toolbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

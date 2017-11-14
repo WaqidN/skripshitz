@@ -29,9 +29,9 @@ import java.util.Map;
 public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner spinner1;
-    TextView emailV, webV,nohpV,titleV,ketV;
+    TextView emailV, webV,nohpV,titleV,ketV, namaV,pictV;
 
-    private String emailp,nohpp,webp,titlep,desp,statusp;
+    private String emailp,nohpp,webp,titlep,desp,statusp,namap,pictp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +44,15 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner1.setOnItemSelectedListener(this);
         final List<String> categories = new ArrayList<String>();
-        categories.add("masuk");
+        //categories.add("masuk");
         categories.add("proses");
         categories.add("selesai");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(dataAdapter);
+
+        namaV = (TextView) findViewById(R.id.view0);
 
         emailV = (TextView) findViewById(R.id.view1);
         emailV.setOnClickListener(new View.OnClickListener() {
@@ -81,20 +83,24 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         });
         titleV = (TextView) findViewById(R.id.view5);
         ketV = (TextView) findViewById(R.id.view6);
+        pictV = (TextView) findViewById(R.id.tmpilG);
 
-
+        namap = getIntent().getStringExtra("pelakunya");
         emailp = getIntent().getStringExtra("emailp");
         webp = getIntent().getStringExtra("websitep");
         nohpp = getIntent().getStringExtra("nohpp");
         titlep = getIntent().getStringExtra("judulp");
         desp = getIntent().getStringExtra("ketp");
         statusp = getIntent().getStringExtra("statusp");
+        pictp = getIntent().getStringExtra("pictnya");
 
+        namaV.setText(namap);
         emailV.setText(emailp);
         webV.setText(webp);
         nohpV.setText(nohpp);
         titleV.setText(titlep);
         ketV.setText(desp);
+        pictV.setText(pictp);
         if (statusp.equals("proses")){
             spinner1.setSelection(0);
         } else {
@@ -136,6 +142,7 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
 
                 Intent send = new Intent(ViewLaporan.this, LapProsesActivity.class);
                 startActivity(send);
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override

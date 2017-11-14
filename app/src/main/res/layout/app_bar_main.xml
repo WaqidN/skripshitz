@@ -13,6 +13,7 @@
 
         <include android:id="@+id/toolbarAdmin"
             layout="@layout/layout_toolbar"/>
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main"/>

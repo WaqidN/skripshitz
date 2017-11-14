@@ -1,7 +1,9 @@
 package com.example.abnormal.crimereport.activity.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,11 +50,24 @@ public class PostUser extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        getActivity().setTitle("Utama");
+
         requestQueue = Volley.newRequestQueue(getContext());
         mRecyclerViewUser = (RecyclerView) getActivity().findViewById(R.id.recycler_view_post);
         mRecyclerViewUser.setHasFixedSize(true);
         RecyclerView.LayoutManager recycleUser = new LinearLayoutManager(getContext());
         mRecyclerViewUser.setLayoutManager(recycleUser);
+
+        FloatingActionButton fabUser = (FloatingActionButton) getActivity().findViewById(R.id.newLapUser);
+        fabUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getContext(), NewLapUser.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         ambildatanya();
     }
@@ -120,7 +135,7 @@ public class PostUser extends Fragment{
 
                 judulnya = (TextView)itemView.findViewById(R.id.judulUser);
                 deskripsi = (TextView)itemView.findViewById(R.id.isiUser);
-                time = (TextView)itemView.findViewById(R.id.dateUser);
+                //time = (TextView)itemView.findViewById(R.id.dateUser);
                 idpotnya = (TextView)itemView.findViewById(R.id.idPostUser);
 
             }
@@ -140,7 +155,7 @@ public class PostUser extends Fragment{
 
             holder.judulnya.setText(datanya.get(position).titlePU);
             holder.deskripsi.setText(datanya.get(position).contentPU);
-            holder.time.setText(datanya.get(position).datePU);
+            //holder.time.setText(datanya.get(position).datePU);
 
         }
 

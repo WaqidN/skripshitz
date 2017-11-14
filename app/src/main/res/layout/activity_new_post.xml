@@ -73,7 +73,7 @@
         android:id="@+id/addfile_Post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
+
         android:layout_marginTop="12dp"
         android:layout_below="@+id/text_addfile"
         android:layout_alignRight="@+id/text_addfile"

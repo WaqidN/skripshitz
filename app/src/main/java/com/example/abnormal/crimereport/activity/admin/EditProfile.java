@@ -1,17 +1,20 @@
-package com.example.abnormal.crimereport.activity;
+package com.example.abnormal.crimereport.activity.admin;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -43,7 +46,7 @@ import java.util.regex.Pattern;
 
 import static android.content.Context.MODE_APPEND;
 
-public class EditProfil extends Fragment {
+public class EditProfile extends Fragment {
 
     private EditText username,password,nik,nama_lengkap,alamat,no_tlpn,email,jk,tgl ;
     private RadioButton laki_laki,perempuan;
@@ -55,43 +58,51 @@ public class EditProfil extends Fragment {
     private EditText tmpatLhir;
     private TextView tnggalLahir;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        //tempat_lahir = (EditText) findViewById(R.id.editTmptLahir);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.activity_edit_profile, container, false);
 
         requestQueue = Volley.newRequestQueue(getContext());
-        sharedPreferences = getActivity().getSharedPreferences("akun",MODE_APPEND);
 
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbarProfil);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        getActivity().setTitle("Edit Profil");
+
+        sharedPreferences = getActivity().getSharedPreferences("akun",MODE_APPEND);
 
         final RelativeLayout rl = (RelativeLayout) getActivity().findViewById(R.id.rl);
 
-        Button btn = (Button) getActivity().findViewById(R.id.picDate);
-        /*btn.setOnClickListener(new View.OnClickListener() {
+        username = (EditText) root.findViewById(R.id.editUser);
+        password = (EditText) root.findViewById(R.id.editPass);
+        nik = (EditText) root.findViewById(R.id.editNik);
+        nama_lengkap = (EditText) root.findViewById(R.id.editNamaL);
+        alamat = (EditText) root.findViewById(R.id.editAlamat);
+        laki_laki = (RadioButton) root.findViewById(R.id.jkL);
+        perempuan = (RadioButton) root.findViewById(R.id.jkLP);
+        email = (EditText) root.findViewById(R.id.editEmail);
+        no_tlpn = (EditText) root.findViewById(R.id.editNoHp);
+        tmpatLhir = (EditText)root.findViewById(R.id.editTmptLahir);
+        tnggalLahir = (TextView) root.findViewById(R.id.editTglLahir);
+
+        Button btn = (Button) root.findViewById(R.id.picDate);
+        btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                *//*DialogFragment dFragment = new DatePickerFragment();
-                dFragment.show(getActivity().getFragmentManager(), "Date Picker");*//*
+                DialogFragment dFragment = new DatePickerFragment();
+                dFragment.show(getFragmentManager(), "Date Picker");
 
-                Toast.makeText(getContext(), "ini", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "ini", Toast.LENGTH_SHORT).show();
             }
-        });*/
-        username = (EditText) getActivity().findViewById(R.id.editUser);
-        password = (EditText) getActivity().findViewById(R.id.editPass);
-        nik = (EditText) getActivity().findViewById(R.id.editNik);
-        nama_lengkap = (EditText) getActivity().findViewById(R.id.editNamaL);
-        alamat = (EditText) getActivity().findViewById(R.id.editAlamat);
-        laki_laki = (RadioButton) getActivity().findViewById(R.id.jkL);
-        perempuan = (RadioButton) getActivity().findViewById(R.id.jkLP);
-        email = (EditText) getActivity().findViewById(R.id.editEmail);
-        no_tlpn = (EditText) getActivity().findViewById(R.id.editNoHp);
-        tmpatLhir = (EditText)getActivity().findViewById(R.id.editTmptLahir);
-        tnggalLahir = (TextView) getActivity().findViewById(R.id.editTglLahir);
-
+        });
 
         try{
             JSONObject jsonObject = new JSONObject(sharedPreferences.getString("data",null));
@@ -119,31 +130,36 @@ public class EditProfil extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(), "error bro "+e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        //tempat_lahir = (EditText) findViewById(R.id.editTmptLahir);
+
+
+        return root;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.icon_actionbar, menu);
+        inflater.inflate(R.menu.icon_actoinbarlap, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.action_user){
+        if(item.getItemId() == R.id.action_user1){
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
                     Url.HttpUrl+"crimereport/user/editprofile.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                 try{
-                     JSONObject jsonObject = new JSONObject(response);
-                     Session session = new Session(getContext().getApplicationContext());
-                     session.refreshData(jsonObject.getJSONObject("data").toString());
-                     Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
+                    try{
+                        JSONObject jsonObject = new JSONObject(response);
+                        Session session = new Session(getContext().getApplicationContext());
+                        session.refreshData(jsonObject.getJSONObject("data").toString());
+                        Intent cklik = new Intent(getContext(), DrawerAdmin.class);
+                        startActivity(cklik);
+                        getActivity().finish();
+                        Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
 
-                 }catch (Exception e){
-                     e.printStackTrace();
-                 }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -211,4 +227,5 @@ public class EditProfil extends Fragment {
             tv.setText(formattedDate);
         }
     }
+
 }

@@ -18,9 +18,9 @@ import java.net.URL;
  */
 
 public class Url {
-    public static String HttpUrl = "http://192.168.43.194/";
+    public static String HttpUrl = "http://192.168.88.15/";
     public String uploadDocument(String file, Context context, Uri uri,
-                                 String namauser,String email,String web,String nohp,
+                                 String namauser,String nama,String email,String web,String nohp,
                                  String namafile,String title,String keterangan){
         HttpURLConnection conn = null;
         String tipefile = null;
@@ -33,7 +33,7 @@ public class Url {
         byte[] buffer;
         int maxBufferSize = 1 * 8024 * 8024;
         try {
-            URL url = new URL(HttpUrl+"crimereport/laporan/buatlaporan.php");
+            URL url = new URL(HttpUrl+"crimereport/laporan/newlaporan.php");
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoInput(true); // Allow Inputs
             conn.setDoOutput(true); // Allow Outputs
@@ -52,39 +52,46 @@ public class Url {
             tipefile = map.getExtensionFromMimeType(context.getContentResolver().getType(uri));
             String param = "type="+tipefile;
             dos.writeBytes(twoHyphens + boundary + lineEnd);
+            if(file != null){
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"filegambar\";filename=\""
-                    +file+"\""+lineEnd+"");
+                dos.writeBytes("Content-Disposition: form-data; name=\"filegambar\";filename=\""
+                        +file+"\""+lineEnd+"");
 
-            dos.writeBytes(lineEnd);
+                dos.writeBytes(lineEnd);
 
-            // create a buffer of  maximum size
-            bytesAvailable = fileInputStream.available();
-
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-
-            // read file and write it into form...
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-                dos.write(buffer, 0, bufferSize);
+                // create a buffer of  maximum size
                 bytesAvailable = fileInputStream.available();
+
                 bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                }
+                // send multipart form data necesssary after file data...
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+
+                dos.writeBytes("Content-Disposition: form-data; name=\"l_user\""+lineEnd+"");
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(namauser);
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+
             }
-            // send multipart form data necesssary after file data...
+            dos.writeBytes("Content-Disposition: form-data; name=\"l_nama\""+lineEnd+"");
+            dos.writeBytes(lineEnd);
+            dos.writeBytes(nama);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_user\""+lineEnd+"");
-            dos.writeBytes(lineEnd);
-            dos.writeBytes(namauser);
-            dos.writeBytes(lineEnd);
-            dos.writeBytes(twoHyphens + boundary + lineEnd);
-
-
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_web\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"l_website\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(web);
             dos.writeBytes(lineEnd);

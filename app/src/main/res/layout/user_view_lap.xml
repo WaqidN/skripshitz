@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/toolbar1"
-        layout="@layout/layout_toolbar" />
+    <include android:id="@+id/toolbarProfil"
+        layout="@layout/layout_toolbar"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="fill_parent"
-        android:layout_height="450dp"
+        android:layout_height="470dp"
         android:layout_below="@+id/toolbar1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="20dp">
 
         <RelativeLayout
@@ -24,66 +23,58 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/nr1"
+                android:id="@+id/editr1"
                 android:hint="Nama"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
 
             <EditText
-                android:id="@+id/nr2"
-                android:layout_below="@+id/nr1"
+                android:id="@+id/editr2"
+                android:layout_below="@id/editr1"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
-
             <EditText
-                android:id="@+id/nr3"
+                android:id="@+id/editr3"
                 android:hint="Web"
                 android:inputType="textWebEditText"
-                android:layout_below="@+id/nr2"
+                android:layout_below="@+id/editr2"
                 style="@style/custom_forms"/>
-
             <EditText
-                android:id="@+id/nr4"
+                android:id="@+id/editr4"
                 android:hint="No.Tlphn"
                 android:inputType="phone"
-                android:layout_below="@+id/nr3"
+                android:layout_below="@+id/editr3"
                 style="@style/custom_forms"/>
             <EditText
-                android:id="@+id/nr5"
+                android:id="@+id/editr5"
                 android:hint="Judul Lap"
                 android:inputType="text"
-                android:layout_below="@+id/nr4"
+                android:layout_below="@+id/editr4"
                 style="@style/custom_forms"/>
 
-            <LinearLayout
-                android:id="@+id/ll"
-                android:layout_below="@id/nr5"
+            <EditText
+                android:id="@+id/editr6"
+                android:layout_below="@+id/editr5"
+                android:hint="Keterangan"
+                style="@style/custom_forms"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
-                <EditText
-                    android:id="@+id/nr6"
-                    android:hint="Keterangan"
-                    style="@style/custom_forms"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/custom_dialog"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tmplG"
-                android:layout_below="@+id/ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"
-                android:drawableLeft="@mipmap/ic_add"/>
+                android:background="@drawable/custom_dialog"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp" />
+
+            <TextView
+                android:id="@+id/tmpilG"
+                android:layout_below="@+id/editr6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_add"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"/>
 
         </RelativeLayout>
 

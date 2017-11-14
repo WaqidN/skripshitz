@@ -97,5 +97,24 @@ public class MSelesai {
     public String websites;
     public String nohs;
     public String statuss;
+    public String pelakus;
+
+    public String getPelakus() {
+        return pelakus;
+    }
+
+    public void setPelakus(String pelakus) {
+        this.pelakus = pelakus;
+    }
+
+    public String getPicts() {
+        return picts;
+    }
+
+    public void setPicts(String picts) {
+        this.picts = picts;
+    }
+
+    public String picts;
 
 }

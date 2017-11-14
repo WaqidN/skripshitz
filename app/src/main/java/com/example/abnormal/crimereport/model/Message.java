@@ -53,4 +53,24 @@ public class Message {
     }
 
     public String idnya,nama, title,desk,getTimestamp,from,email,website,nomor_telpon,status;
+
+    public String getPelaku() {
+        return pelaku;
+    }
+
+    public void setPelaku(String pelaku) {
+        this.pelaku = pelaku;
+    }
+
+    public String pelaku;
+
+    public String getPict() {
+        return pict;
+    }
+
+    public void setPict(String pict) {
+        this.pict = pict;
+    }
+
+    public String pict;
 }

@@ -3,6 +3,7 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class PostActivity extends Fragment {
     private RecyclerView mRecyclerView;
     private static String LOG_TAG = "PostActivity";
     RequestQueue requestQueue;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -45,16 +47,20 @@ public class PostActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         requestQueue = Volley.newRequestQueue(getContext());
+
+        getActivity().setTitle("Berita");
+
         mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager recyclemana = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(recyclemana);
+        swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_refresh_layoutP);
 
         ambildatanya();
     }
 
     private void ambildatanya() {
-
+        swipeRefreshLayout.stopNestedScroll();
         String Json = HttpUrl+"crimereport/post/viewpost.php";
 
         JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Json, new Response.Listener<JSONObject>() {
@@ -74,7 +80,7 @@ public class PostActivity extends Fragment {
                         post.idPost = jsonObject1.getString("id");
                         post.titlePost = jsonObject1.getString("post_title");
                         post.contetPost = jsonObject1.getString("post_content");
-                        post.datePost = jsonObject1.getString("post_date");
+                        //post.datePost = jsonObject1.getString("post_date");
                         list.add(post);
                     }
 
@@ -116,7 +122,7 @@ public class PostActivity extends Fragment {
 
                 judulnya = (TextView)itemView.findViewById(R.id.judulP);
                 deskripsi = (TextView)itemView.findViewById(R.id.isiB);
-                time = (TextView)itemView.findViewById(R.id.date);
+                //time = (TextView)itemView.findViewById(R.id.date);
                 idpotnya = (TextView)itemView.findViewById(R.id.idPost);
 
             }
@@ -136,7 +142,13 @@ public class PostActivity extends Fragment {
 
             holder.judulnya.setText(datanya.get(position).titlePost);
             holder.deskripsi.setText(datanya.get(position).contetPost);
-            holder.time.setText(datanya.get(position).datePost);
+            //holder.time.setText(datanya.get(position).datePost);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "coba", Toast.LENGTH_SHORT).show();
+                }
+            });
 
         }
 

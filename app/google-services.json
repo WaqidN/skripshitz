@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "877876480886-k6k9sn08ephukpf7uqnvbk06j63dcq03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abnormal.crimereport",
+            "certificate_hash": "707e72e243eb1b1c94e04c92ab4f37b4f2ab31c4"
+          }
+        },
+        {
           "client_id": "877876480886-njoh0oe4krutfbn379dudopv3f82t5qi.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877876480886-njoh0oe4krutfbn379dudopv3f82t5qi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

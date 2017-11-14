@@ -55,12 +55,11 @@
                 android:inputType="text"
                 android:layout_below="@+id/nr4"
                 style="@style/custom_forms"/>
-
             <LinearLayout
                 android:id="@+id/ll"
                 android:layout_below="@id/nr5"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
+                android:layout_height="75dp">
                 <EditText
                     android:id="@+id/nr6"
                     android:hint="Keterangan"
@@ -84,6 +83,7 @@
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"
                 android:drawableLeft="@mipmap/ic_add"/>
+
 
         </RelativeLayout>
 
