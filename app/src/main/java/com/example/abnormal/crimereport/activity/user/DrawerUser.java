@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -53,7 +52,8 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_viewUser);
         navigationView.setNavigationItemSelectedListener(this);
 
-        displaySelectedScreen(R.id.navigation1);
+        showHome();
+
     }
 
     public void logOut() {
@@ -81,17 +81,35 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (fragment instanceof PostUser) {
+                super.onBackPressed();
+            } else {
+                showHome();
+            }
+
         }
     }
 
-    private void displaySelectedScreen(int itemId) {
+    private void showHome() {
+
+        fragment = new PostUser();
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.framelayoutUser, fragment);
+            ft.commit();
+        }
+
+    }
+
+    Fragment fragment = null;
+
+    public boolean onNavigationItemSelected(MenuItem itemId) {
 
         //creating fragment object
-        Fragment fragment = null;
 
+        int id = itemId.getItemId();
         //initializing the fragment object which is selected
-        switch (itemId) {
+        switch (id) {
             case R.id.navigation1:
                 fragment = new PostUser();
                 break;
@@ -120,6 +138,7 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerUser);
         drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     private void keluarApp() {
@@ -141,12 +160,5 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
 
         AlertDialog alertDialog = alertBuilder.create();
         alertDialog.show();
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        displaySelectedScreen(item.getItemId());
-        return true;
     }
 }

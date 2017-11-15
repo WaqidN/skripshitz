@@ -1,5 +1,6 @@
 package com.example.abnormal.crimereport.activity.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -122,7 +123,6 @@ public class PostActivity extends Fragment {
 
                 judulnya = (TextView)itemView.findViewById(R.id.judulP);
                 deskripsi = (TextView)itemView.findViewById(R.id.isiB);
-                //time = (TextView)itemView.findViewById(R.id.date);
                 idpotnya = (TextView)itemView.findViewById(R.id.idPost);
 
             }
@@ -146,7 +146,9 @@ public class PostActivity extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "coba", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getActivity(), ViewPost.class);
+                    startActivity(intent);
                 }
             });
 

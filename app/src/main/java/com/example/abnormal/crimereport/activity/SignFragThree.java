@@ -75,6 +75,7 @@ public class SignFragThree extends Fragment {
                                     Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getActivity(),LoginActivity.class);
                                     startActivity(intent);
+                                    getActivity();
                                 }else{
                                     Toast.makeText(getContext(), object.getString("pesan"), Toast.LENGTH_SHORT).show();
                                 }

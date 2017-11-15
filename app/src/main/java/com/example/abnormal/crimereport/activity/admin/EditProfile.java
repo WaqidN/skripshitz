@@ -137,13 +137,16 @@ public class EditProfile extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.icon_actoinbarlap, menu);
+        inflater.inflate(R.menu.actionbar_send, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_user1){
+
+            Toast.makeText(getContext(), "kirim", Toast.LENGTH_SHORT).show();
+
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
                     Url.HttpUrl+"crimereport/user/editprofile.php", new Response.Listener<String>() {
                 @Override
@@ -152,9 +155,11 @@ public class EditProfile extends Fragment {
                         JSONObject jsonObject = new JSONObject(response);
                         Session session = new Session(getContext().getApplicationContext());
                         session.refreshData(jsonObject.getJSONObject("data").toString());
+
                         Intent cklik = new Intent(getContext(), DrawerAdmin.class);
                         startActivity(cklik);
                         getActivity().finish();
+
                         Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
 
                     }catch (Exception e){

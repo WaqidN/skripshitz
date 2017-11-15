@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/r1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Password"
+        android:textSize="17dp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/in_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r1"
+        android:hint=""
+        android:inputType="numberDecimal"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/r2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/in_pemasukan"
+        android:text="ReePassword"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"/>
+    <EditText
+        android:id="@+id/in_reepass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r2"
+        android:hint=""
+        android:inputType="text"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/batal_pem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/in_deskriPe"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/simpan_pem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/bg_main"
+        android:layout_alignTop="@+id/batal_pem"
+        android:layout_alignRight="@+id/in_deskriPe"
+        android:layout_alignEnd="@+id/in_deskriPe"
+        android:layout_marginRight="5dp"/>
+
+</RelativeLayout>

@@ -88,7 +88,11 @@
             android:name=".activity.user.UserViewLap"
             android:label="Edit Laporan"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.user.UserEditProfile"
+        <activity
+            android:name=".activity.user.UserEditProfile"
+            android:label="Edit Laporan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.admin.ViewPost"
             android:label="Edit Laporan"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

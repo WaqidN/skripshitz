@@ -11,47 +11,11 @@
     android:paddingRight="?listPreferredItemPaddingRight"
     android:paddingTop="@dimen/padding_list_row">
 
-
-    <LinearLayout
-        android:id="@+id/message_container"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:paddingLeft="72dp"
-        android:paddingRight="@dimen/padding_list_row">
-
-
-        <TextView
-            android:id="@+id/from"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textColor="@color/from"
-            android:textSize="@dimen/msg_text_primary"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_primary"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textColor="@color/subject"
-            android:textSize="@dimen/msg_text_secondary"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_secondary"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textColor="@color/message"
-            android:textSize="@dimen/msg_text_secondary" />
-
-    </LinearLayout>
+        android:id="@+id/idp"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:id="@+id/icon_container"
@@ -59,14 +23,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/icon_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fillAfter="false"
-            android:fillEnabled="false">
-
             <ImageView
+                android:id="@+id/bg"
                 android:layout_width="@dimen/icon_width_height"
                 android:layout_height="@dimen/icon_width_height"
                 android:src="@drawable/bg_circle" />
@@ -76,30 +34,45 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_done_white_24dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/icon_front"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fillAfter="false"
-            android:fillEnabled="false">
-
-            <ImageView
-                android:id="@+id/icon_profile"
-                android:layout_width="@dimen/icon_width_height"
-                android:layout_height="@dimen/icon_width_height" />
-
-            <TextView
-                android:id="@+id/icon_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/icon_text" />
-        </RelativeLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_toRightOf="@+id/icon_container"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/from"
+        android:textSize="@dimen/msg_text_primary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_primary"
+        android:layout_below="@+id/from"
+        android:layout_toRightOf="@+id/icon_container"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/subject"
+        android:textSize="@dimen/msg_text_secondary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_secondary"
+        android:layout_below="@+id/txt_primary"
+        android:layout_toRightOf="@+id/icon_container"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/message"
+        android:textSize="@dimen/msg_text_secondary" />
 
     <TextView
         android:id="@+id/timestamp"
@@ -109,6 +82,5 @@
         android:textColor="@color/timestamp"
         android:textSize="@dimen/timestamp"
         android:textStyle="bold" />
-
 
 </RelativeLayout>

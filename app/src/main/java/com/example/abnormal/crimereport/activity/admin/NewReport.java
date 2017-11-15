@@ -128,6 +128,5 @@ public class NewReport extends ActionBarActivity {
             }
         }.execute();
     }
-
 }
 

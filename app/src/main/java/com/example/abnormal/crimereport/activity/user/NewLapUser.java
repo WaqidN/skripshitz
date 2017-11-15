@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
@@ -30,7 +29,7 @@ public class NewLapUser extends ActionBarActivity {
     private Bitmap bitmap;
     private String namaGambar;
     private Uri dataGambar;
-    private TextView tmplPict;
+    private TextView tmplG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class NewLapUser extends ActionBarActivity {
         no      = (EditText)findViewById(R.id.nr4);
         judul   = (EditText)findViewById(R.id.nr5);
         keteragan= (EditText)findViewById(R.id.nr6);
-
+        tmplG = (TextView)findViewById(R.id.tmplG);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class NewLapUser extends ActionBarActivity {
         try{
             bitmap      = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
             //Toast.makeText(this, getFileName(data.getData()), Toast.LENGTH_SHORT).show();
-            tmplPict.setText(getFileName(data.getData()));
+            tmplG.setText(getFileName(data.getData()));
             namaGambar  = getFileName(data.getData());
             dataGambar  = data.getData();
         }catch (Exception e){
@@ -114,13 +113,14 @@ public class NewLapUser extends ActionBarActivity {
                             web.getText().toString(),no.getText().toString(),namaGambar,
                             judul.getText().toString(),keteragan.getText().toString());
 
-                }else {
+                }else{
                     return new Url().uploadDocument("",
-                            getApplicationContext(), null, iduser, nama.getText().toString(), email.getText().toString(),
-                            web.getText().toString(), no.getText().toString(), namaGambar,
-                            judul.getText().toString(), keteragan.getText().toString());
-                    }
+                            getApplicationContext(),null,iduser,nama.getText().toString(),email.getText().toString(),
+                            web.getText().toString(),no.getText().toString(),namaGambar,
+                            judul.getText().toString(),keteragan.getText().toString());
+
                 }
+            }
 
             @Override
             protected void onPostExecute(String s) {
@@ -128,7 +128,6 @@ public class NewLapUser extends ActionBarActivity {
                 Intent hasil = new Intent(NewLapUser.this, DrawerUser.class);
                 startActivity(hasil);
                 finish();
-                Toast.makeText(NewLapUser.this, "hasil "+s, Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }

@@ -23,6 +23,7 @@ import com.example.abnormal.crimereport.Url;
 import com.example.abnormal.crimereport.activity.admin.DrawerAdmin;
 import com.example.abnormal.crimereport.activity.user.DrawerUser;
 import com.example.abnormal.crimereport.pojo.Session;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONObject;
 
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.username);
 
         password = (EditText)findViewById(R.id.pass);
+        final String token = FirebaseInstanceId.getInstance().getToken();
 
         Session session = new Session(this);
         if(session.sudahLogin() == true){
@@ -86,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                                             role);
                                     Intent intent = new Intent(getApplicationContext(),DrawerAdmin.class);
                                     startActivity(intent);
+                                    finish();
                                 }
 
                             }else{
@@ -108,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         Map<String,String> stringMap = new HashMap<String, String>();
                         stringMap.put("username",username.getText().toString());
                         stringMap.put("password",password.getText().toString());
+                        stringMap.put("token",token);
                         return stringMap;
                     }
                 };

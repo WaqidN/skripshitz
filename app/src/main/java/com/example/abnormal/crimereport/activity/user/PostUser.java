@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.admin.ViewPost;
 import com.example.abnormal.crimereport.model.userM.Post_View;
 
 import org.json.JSONArray;
@@ -156,6 +157,14 @@ public class PostUser extends Fragment{
             holder.judulnya.setText(datanya.get(position).titlePU);
             holder.deskripsi.setText(datanya.get(position).contentPU);
             //holder.time.setText(datanya.get(position).datePU);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), ViewPost.class);
+                    startActivity(intent);
+
+                }
+            });
 
         }
 

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -20,7 +19,7 @@ import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.LoginActivity;
 import com.example.abnormal.crimereport.activity.user.PostUser;
 
-public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbaradmin;
     private NavigationView navigationViewAdmin;
@@ -44,22 +43,22 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_viewAdmin);
         navigationView.setNavigationItemSelectedListener(this);
 
-        displaySelectedScreen(R.id.A_nav2);
+            showHome();
+
     }
 
 
-
     public void logOut() {
-        SharedPreferences sharedPreferences = getSharedPreferences("akun",MODE_APPEND);
+        SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
         sharedPreferences.edit().clear().commit();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
 
     @Override
-    public boolean onOptionsItemSelected ( MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.A_nav9:
                 logOut();
                 return true;
@@ -74,17 +73,37 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (fragment instanceof LapMasuk){
+                super.onBackPressed();
+            } else {
+                showHome();
+            }
+
         }
     }
 
-    private void displaySelectedScreen(int itemId) {
+    private void showHome() {
+
+        fragment = new LapMasuk();
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.framelayout, fragment);
+            ft.commit();
+        }
+
+    }
+
+
+
+    Fragment fragment = null;
+
+    public boolean onNavigationItemSelected(MenuItem itemId) {
 
         //creating fragment object
-        Fragment fragment = null;
 
+        int id = itemId.getItemId();
         //initializing the fragment object which is selected
-        switch (itemId) {
+        switch (id) {
             case R.id.A_nav2:
                 fragment = new LapMasuk();
                 break;
@@ -95,7 +114,7 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
                 fragment = new LapSelesaiActivity();
                 break;
             case R.id.A_nav3:
-                fragment = new PostUser();
+                fragment = new PostActivity();
                 break;
             case R.id.A_nav5:
                 fragment = new EditProfile();
@@ -122,6 +141,7 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerAdmin);
         drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     private void keluarApp() {
@@ -145,9 +165,4 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         alertDialog.show();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        displaySelectedScreen(item.getItemId());
-        return true;
-    }
 }

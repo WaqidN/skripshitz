@@ -111,7 +111,7 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.icon_actoinbarlap, menu);
+        getMenuInflater().inflate(R.menu.actionbar_send, menu);
         return true;
     }
 
@@ -130,13 +130,14 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_user1){
+
             setStatus((String) spinner1.getSelectedItem(),getIntent().getStringExtra("id"));
         }
         return true;
     }
 
     public void setStatus(final String status, final String idp){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "/crimereport/laporan/editlaporan.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "/crimereport/laporan/edit_status_lap.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
