@@ -52,9 +52,10 @@ public class Url {
             tipefile = map.getExtensionFromMimeType(context.getContentResolver().getType(uri));
             String param = "type="+tipefile;
             dos.writeBytes(twoHyphens + boundary + lineEnd);
+
             if(file != null){
 
-                dos.writeBytes("Content-Disposition: form-data; name=\"filegambar\";filename=\""
+                dos.writeBytes("Content-Disposition: form-data; name=\"a_file\";filename=\""
                         +file+"\""+lineEnd+"");
 
                 dos.writeBytes(lineEnd);
@@ -78,60 +79,60 @@ public class Url {
                 dos.writeBytes(lineEnd);
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-                dos.writeBytes("Content-Disposition: form-data; name=\"l_user\""+lineEnd+"");
+                dos.writeBytes("Content-Disposition: form-data; name=\"a_user\""+lineEnd+"");
                 dos.writeBytes(lineEnd);
                 dos.writeBytes(namauser);
                 dos.writeBytes(lineEnd);
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
 
             }
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_nama\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_nama\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(nama);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_website\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_website\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(web);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_nohp\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_nohp\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(nohp);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_title\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_title\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(title);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_des\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_des\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(keterangan);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_file\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_file\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(namafile);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_user\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_user\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(namauser);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
 
-            dos.writeBytes("Content-Disposition: form-data; name=\"l_email\""+lineEnd+"");
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_email\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(email);
             dos.writeBytes(lineEnd);

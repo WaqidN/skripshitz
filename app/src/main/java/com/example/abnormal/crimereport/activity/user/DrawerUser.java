@@ -3,6 +3,7 @@ package com.example.abnormal.crimereport.activity.user;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,9 @@ import android.view.MenuItem;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.LoginActivity;
+import com.example.abnormal.crimereport.activity.admin.PostActivity;
+import com.example.abnormal.crimereport.pojo.Keluar;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 /**
  * Created by abnormal on 20/07/17.
@@ -34,7 +38,6 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
     private static String LOG_TAG = "Utama";
 
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_drawer_activity);
@@ -56,22 +59,16 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
 
     }
 
-    public void logOut() {
-        SharedPreferences sharedPreferences = getSharedPreferences("akun",MODE_APPEND);
-        sharedPreferences.edit().clear().commit();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-        finish();
-    }
 
     @Override
-    public boolean onOptionsItemSelected ( MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.A_nav6:
                 logOut();
                 return true;
             default:
-                return true;
+                return false;
         }
     }
 
@@ -81,7 +78,7 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if (fragment instanceof PostUser) {
+            if (fragment instanceof PostUser){
                 super.onBackPressed();
             } else {
                 showHome();
@@ -111,7 +108,7 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         //initializing the fragment object which is selected
         switch (id) {
             case R.id.navigation1:
-                fragment = new PostUser();
+                fragment = new PostActivity();
                 break;
             case R.id.navigation2:
                 fragment = new LaporanUser();
@@ -120,10 +117,10 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
                 fragment = new UserEditProfile();
                 break;
             case R.id.navigation4:
-                //fragment = new PostUser();
+                //fragment = new PostActivity();
                 break;
             case R.id.navigation5:
-                //fragment = new EditProfile();
+                //fragment = new EditProfil();
                 break;
             case R.id.navigation6:
                 logOut();
@@ -139,6 +136,31 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerUser);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logOut() {
+       /* SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+        sharedPreferences.edit().clear().commit();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();*/
+        final String token = FirebaseInstanceId.getInstance().getToken();
+
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+
+                Keluar keluar = new Keluar();
+                return keluar.hapusToken(token);
+            }
+
+            protected  void onPostExecute(String s){
+                super.onPostExecute(s);
+                SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+                sharedPreferences.edit().clear().commit();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        }.execute();
     }
 
     private void keluarApp() {

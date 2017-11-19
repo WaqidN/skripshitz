@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserViewLap extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class UserViewLap extends AppCompatActivity {
 
 
     EditText email1, web1,nohp1,title1,ket1,nama1,id1;
@@ -37,7 +34,7 @@ public class UserViewLap extends AppCompatActivity implements AdapterView.OnItem
     private RequestQueue requestQueue;
 
     private String email,nohp,web,title,des,status, nama, pict,idm;
-    private Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +72,6 @@ public class UserViewLap extends AppCompatActivity implements AdapterView.OnItem
         pict1.setText(pict);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        String item = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

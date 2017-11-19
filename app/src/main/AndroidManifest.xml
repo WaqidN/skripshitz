@@ -36,8 +36,8 @@
             android:label="Buat Laporan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.admin.EditProfile"
-            android:label="Edit Profilr"
+            android:name=".activity.admin.EditProfil"
+            android:label="Edit Profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.SignFragOne" />
         <activity android:name=".activity.SignFragTwo" />
@@ -49,6 +49,10 @@
         <activity
             android:name=".activity.admin.PostActivity"
             android:label="Berita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.ViewPost"
+            android:label="View Berita"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.EditLaporan"
@@ -92,9 +96,11 @@
             android:name=".activity.user.UserEditProfile"
             android:label="Edit Laporan"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.admin.ViewPost"
-            android:label="Edit Laporan"
+        <activity
+            android:name=".activity.user.UserViewPost"
+            android:label="View Berita"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.admin.EditPost"></activity>
     </application>
 
 </manifest>

@@ -83,9 +83,9 @@ public class LapMasuk extends Fragment{
 
     public void ambildata(){
 
-        LapMasukCallBack lc = new LapMasukCallBack(getContext());
+            LapMasukCallBack lc = new LapMasukCallBack(getContext());
 
-        lc.LapMasukCallBack(new LapMasukCallBack.LapMasukBack() {
+            lc.LapMasukCallBack(new LapMasukCallBack.LapMasukBack() {
             @Override
             public void hasil(String hasil) {
 

@@ -34,7 +34,7 @@ import java.util.List;
 
 import static com.example.abnormal.crimereport.Url.HttpUrl;
 
-public class LaporanUser extends Fragment {
+public class        LaporanUser extends Fragment {
 
     private List<Lap_View> messageList;
     private RecyclerView recyclerView;

@@ -10,7 +10,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.admin.callback.LapProsesCallBack;
 import com.example.abnormal.crimereport.helper.DividerItemDecoration;
 import com.example.abnormal.crimereport.model.MProses;
 
@@ -31,8 +28,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.abnormal.crimereport.Url.HttpUrl;
 
 /**
  * Created by abnormal on 17/06/17.
@@ -91,18 +86,16 @@ public class LapProsesActivity extends Fragment {
 
     private void ambildatanya() {
 
-        String Json = HttpUrl+"crimereport/laporan/lap_proses.php";
-
-        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Json, new Response.Listener<JSONObject>() {
+        LapProsesCallBack lpc = new LapProsesCallBack(getContext());
+        lpc.LapProsesCallBack(new LapProsesCallBack.LapProsesBack() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void hasil(String hasil) {
 
                 List<MProses> list = new ArrayList<>();
 
-                Log.e("data", response.toString());
-
                 try {
-                    JSONArray jsonArray = response.getJSONArray("hasil");
+                    JSONObject jsonObject = new JSONObject(hasil);
+                    JSONArray jsonArray = jsonObject.getJSONArray("hasil");
 
                     for (int a = 0; a<jsonArray.length(); a++){
                         JSONObject jsonObject1 = jsonArray.getJSONObject(a);
@@ -129,18 +122,9 @@ public class LapProsesActivity extends Fragment {
 
                 SetAdapter adapter = new SetAdapter(list);
                 recyclerView1.setAdapter(adapter);
-            }
 
-
-        }, new Response.ErrorListener(){
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        requestQueue.add(jsonObjectRequest1);
     }
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{

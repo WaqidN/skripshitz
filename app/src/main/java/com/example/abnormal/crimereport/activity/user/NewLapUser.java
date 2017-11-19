@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
@@ -100,7 +101,8 @@ public class NewLapUser extends ActionBarActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                //Toast.makeText(getApplicationContext(), "upload gambar", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(NewLapUser.this, "Upload Gambar", Toast.LENGTH_SHORT).show();
 
             }
 

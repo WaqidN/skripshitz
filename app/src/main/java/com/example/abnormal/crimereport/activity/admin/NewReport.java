@@ -97,7 +97,7 @@ public class NewReport extends ActionBarActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                //Toast.makeText(getApplicationContext(), "upload gambar", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "upload gambar", Toast.LENGTH_SHORT).show();
 
             }
 

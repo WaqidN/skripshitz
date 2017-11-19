@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.activity.admin.ViewPost;
 import com.example.abnormal.crimereport.model.userM.Post_View;
 
 import org.json.JSONArray;
@@ -71,6 +70,7 @@ public class PostUser extends Fragment{
         });
 
         ambildatanya();
+
     }
 
     private void ambildatanya() {
@@ -95,6 +95,7 @@ public class PostUser extends Fragment{
                         post.titlePU = jsonObject1.getString("post_title");
                         post.contentPU = jsonObject1.getString("post_content");
                         post.datePU = jsonObject1.getString("post_date");
+
                         listv.add(post);
                     }
 
@@ -136,7 +137,6 @@ public class PostUser extends Fragment{
 
                 judulnya = (TextView)itemView.findViewById(R.id.judulUser);
                 deskripsi = (TextView)itemView.findViewById(R.id.isiUser);
-                //time = (TextView)itemView.findViewById(R.id.dateUser);
                 idpotnya = (TextView)itemView.findViewById(R.id.idPostUser);
 
             }
@@ -160,7 +160,10 @@ public class PostUser extends Fragment{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), ViewPost.class);
+                    Intent intent = new Intent(getActivity(), UserViewPost.class);
+                    intent.putExtra("judulnya",datanya.get(position).titlePU);
+                    intent.putExtra("isinya", datanya.get(position).contentPU);
+                    intent.putExtra("date", datanya.get(position).datePU);
                     startActivity(intent);
 
                 }

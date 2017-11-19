@@ -3,6 +3,7 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,7 +18,8 @@ import android.view.MenuItem;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.LoginActivity;
-import com.example.abnormal.crimereport.activity.user.PostUser;
+import com.example.abnormal.crimereport.pojo.Keluar;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,13 +50,6 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
     }
 
 
-    public void logOut() {
-        SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
-        sharedPreferences.edit().clear().commit();
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        finish();
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -63,7 +58,7 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
                 logOut();
                 return true;
             default:
-                return true;
+                return false;
         }
     }
 
@@ -93,8 +88,6 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
 
     }
 
-
-
     Fragment fragment = null;
 
     public boolean onNavigationItemSelected(MenuItem itemId) {
@@ -117,7 +110,7 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
                 fragment = new PostActivity();
                 break;
             case R.id.A_nav5:
-                fragment = new EditProfile();
+                fragment = new EditProfil();
                 break;
             case R.id.A_nav6:
                 startActivity(new Intent(DrawerAdmin.this, LacakLaporan.class));
@@ -142,6 +135,31 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerAdmin);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logOut() {
+       /* SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+        sharedPreferences.edit().clear().commit();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();*/
+        final String token = FirebaseInstanceId.getInstance().getToken();
+
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+
+                Keluar keluar = new Keluar();
+                return keluar.hapusToken(token);
+            }
+
+            protected  void onPostExecute(String s){
+                super.onPostExecute(s);
+                SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+                sharedPreferences.edit().clear().commit();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        }.execute();
     }
 
     private void keluarApp() {

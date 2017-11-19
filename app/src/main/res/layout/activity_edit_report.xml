@@ -11,7 +11,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="fill_parent"
-        android:layout_height="470dp"
+        android:layout_height="5000dp"
         android:layout_below="@+id/toolbar1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -22,8 +22,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/A1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible"/>
+
             <EditText
                 android:id="@+id/editr1"
+                android:layout_below="@+id/A1"
                 android:hint="Nama"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
@@ -63,12 +73,8 @@
                     style="@style/custom_forms"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="5dp"
                     android:background="@drawable/custom_dialog"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp" />
+                    android:gravity="top|left"/>
             </LinearLayout>
 
             <Spinner
@@ -80,6 +86,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"/>
+
             <TextView
                 android:id="@+id/tmpilG"
                 android:layout_below="@+id/spinner"

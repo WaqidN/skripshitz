@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.admin.callback.PostCallBack;
 import com.example.abnormal.crimereport.model.PostView;
 
 import org.json.JSONArray;
@@ -27,8 +24,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.abnormal.crimereport.Url.HttpUrl;
 
 public class PostActivity extends Fragment {
 
@@ -61,19 +56,19 @@ public class PostActivity extends Fragment {
     }
 
     private void ambildatanya() {
-        swipeRefreshLayout.stopNestedScroll();
-        String Json = HttpUrl+"crimereport/post/viewpost.php";
 
-        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Json, new Response.Listener<JSONObject>() {
+        PostCallBack pc = new PostCallBack(getContext());
+
+        pc.PostCallBack(new PostCallBack.PostBack() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void hasil(String hasil) {
 
                 List<PostView> list = new ArrayList<>();
 
-                Log.e("data", response.toString());
-
                 try {
-                    JSONArray jsonArray = response.getJSONArray("hasil");
+                    JSONObject jsonObject = new JSONObject(hasil);
+                    JSONArray jsonArray = jsonObject.getJSONArray("hasil");
+
 
                     for (int a = 0; a<jsonArray.length(); a++){
                         JSONObject jsonObject1 = jsonArray.getJSONObject(a);
@@ -81,7 +76,7 @@ public class PostActivity extends Fragment {
                         post.idPost = jsonObject1.getString("id");
                         post.titlePost = jsonObject1.getString("post_title");
                         post.contetPost = jsonObject1.getString("post_content");
-                        //post.datePost = jsonObject1.getString("post_date");
+                        post.datePost = jsonObject1.getString("post_date");
                         list.add(post);
                     }
 
@@ -94,17 +89,7 @@ public class PostActivity extends Fragment {
                 SetAdapter adapter = new SetAdapter(list);
                 mRecyclerView.setAdapter(adapter);
             }
-
-
-        }, new Response.ErrorListener(){
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
         });
-
-        requestQueue.add(jsonObjectRequest1);
     }
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{
@@ -148,6 +133,10 @@ public class PostActivity extends Fragment {
                 public void onClick(View v) {
 
                     Intent intent = new Intent(getActivity(), ViewPost.class);
+                    intent.putExtra("idnya", datanya.get(position).idPost);
+                    intent.putExtra("judulnya",datanya.get(position).titlePost);
+                    intent.putExtra("isinya", datanya.get(position).contetPost);
+                    intent.putExtra("date", datanya.get(position).datePost);
                     startActivity(intent);
                 }
             });

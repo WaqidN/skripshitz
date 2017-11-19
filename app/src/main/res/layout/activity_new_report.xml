@@ -60,19 +60,15 @@
                 android:id="@+id/ll"
                 android:layout_below="@id/nr5"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
+                android:layout_height="100dp">
                 <EditText
                     android:id="@+id/nr6"
                     android:hint="Keterangan"
                     style="@style/custom_forms"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="5dp"
                     android:background="@drawable/custom_dialog"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp" />
+                    android:gravity="top|left"/>
             </LinearLayout>
 
             <TextView
