@@ -3,7 +3,6 @@ package com.example.abnormal.crimereport.activity.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -41,8 +40,8 @@ public class UserViewLap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_view_lap);
 
-        Toolbar toolbarEdit = (Toolbar)findViewById(R.id.toolbarProfil);
-        setSupportActionBar(toolbarEdit);
+        getSupportActionBar().setTitle("View Laporan");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         requestQueue = Volley.newRequestQueue(this);
         nama1 = (EditText)findViewById(R.id.editr1);

@@ -28,6 +28,9 @@ public class SignActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
+
+
+
         viewPagerSign = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPagerSign);
 

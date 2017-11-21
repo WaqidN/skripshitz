@@ -19,7 +19,18 @@
             android:scrollbars="vertical"
             android:layout_below="@+id/toolbarB"/>
 
-
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_white_36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="27dp" />
 
 </RelativeLayout>

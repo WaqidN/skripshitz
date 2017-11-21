@@ -37,8 +37,8 @@ public class NewLapUser extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_new_lap);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar1);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("New Laporan");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nama    = (EditText) findViewById(R.id.nr1);
         email   = (EditText)findViewById(R.id.nr2);

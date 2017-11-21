@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestLapSelesai {
 
-    String datanya = "";
+    String datanya = "{\"hasil\":[{\"user_username\":\"adirafairuz\",\"id\":\"8\",\"l_nama\":\"danu\",\"l_email\":\"danu@gmail.con\",\"l_website\":\"http:\\/\\/gebyarpoin555.blogspot.com\",\"l_nohp\":\"02140885777\",\"l_title\":\"penipuan mengatasnamakan indosat\",\"l_des\":\"penipuan dengan modus gebyar poin 555 \",\"l_date\":\"2017-11-16 23:56:41\",\"l_status\":\"selesai\",\"l_file\":\"\"}]}";
     Context context;
 
     @Before

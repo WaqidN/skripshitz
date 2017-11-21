@@ -18,7 +18,7 @@ import java.net.URL;
  */
 
 public class Url {
-    public static String HttpUrl = "http://192.168.43.194/";
+    public static String HttpUrl = "http://192.168.88.14/";
     public String uploadDocument(String file, Context context, Uri uri,
                                  String namauser,String nama,String email,String web,String nohp,
                                  String namafile,String title,String keterangan){

@@ -3,7 +3,6 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,8 +37,8 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_laporan);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarView);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("View Laporan");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner1.setOnItemSelectedListener(this);

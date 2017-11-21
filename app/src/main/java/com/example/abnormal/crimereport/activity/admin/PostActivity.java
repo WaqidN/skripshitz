@@ -3,6 +3,7 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,6 +52,17 @@ public class PostActivity extends Fragment {
         RecyclerView.LayoutManager recyclemana = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(recyclemana);
         swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_refresh_layoutP);
+
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.newPost);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getContext(), NewPOst.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         ambildatanya();
     }

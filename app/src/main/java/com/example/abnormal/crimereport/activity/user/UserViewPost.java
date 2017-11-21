@@ -2,7 +2,6 @@ package com.example.abnormal.crimereport.activity.user;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.TextView;
 
@@ -18,8 +17,8 @@ public class UserViewPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_view_post);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarPost);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("View Post");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         judulP = (TextView) findViewById(R.id.viewTitle);
         isiP = (TextView) findViewById(R.id.viewIsi);

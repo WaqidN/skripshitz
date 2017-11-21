@@ -32,8 +32,8 @@ public class NewReport extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_report);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar1);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("New Laporan");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tmplPict = (TextView)findViewById(R.id.tmplG);
         nama    = (EditText)findViewById(R.id.nr1);

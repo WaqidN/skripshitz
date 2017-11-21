@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class TestLapProses {
 
-    String datanya = "";
+    String datanya = "{\"hasil\":[{\"user_username\":\"adirafairuz\",\"id\":\"9\",\"l_nama\":\"avelina\",\"l_email\":\"avelina_sitombling@gmail.con\",\"l_website\":\"http:\\/\\/indosatplus.blogspot.com\\/\",\"l_nohp\":\"085693253645\",\"l_title\":\"penipuan mengatasnamakan indosat\",\"l_des\":\"mohon untuk di tindak lanjuti dengan nomor dan situs yang saya berika\\n\",\"l_date\":\"2017-11-16 23:56:32\",\"l_status\":\"proses\",\"l_file\":\"\"}]}";
     Context context;
 
     @Before

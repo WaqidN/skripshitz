@@ -5,14 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <include android:id="@+id/toolbarProfil"
-        layout="@layout/layout_toolbar"/>
-
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="fill_parent"
         android:layout_height="470dp"
-        android:layout_below="@+id/toolbar1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="80dp"
@@ -22,8 +18,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/lx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:visibility="invisible"/>
+
             <EditText
                 android:id="@+id/editr1"
+                android:layout_below="@+id/lx"
                 android:hint="Nama"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>

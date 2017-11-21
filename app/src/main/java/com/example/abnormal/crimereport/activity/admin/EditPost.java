@@ -34,6 +34,9 @@ public class EditPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_post);
 
+        getSupportActionBar().setTitle("Edit Post");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         requestQueue = Volley.newRequestQueue(this);
 
         iniJudul = (EditText) findViewById(R.id.editp1);

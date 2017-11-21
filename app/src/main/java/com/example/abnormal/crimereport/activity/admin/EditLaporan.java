@@ -3,7 +3,6 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,8 +50,8 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_report);
 
-        Toolbar toolbarEdit = (Toolbar)findViewById(R.id.toolbarProfil);
-        setSupportActionBar(toolbarEdit);
+       getSupportActionBar().setTitle("Edit Laporan");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -94,6 +93,7 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         title1.setText(title);
         ket1.setText(des);
         pict1.setText(pict);
+
         if(status.equals("masuk")){
             spinner.setSelection(0);
         }else if(status.equals("proses")){

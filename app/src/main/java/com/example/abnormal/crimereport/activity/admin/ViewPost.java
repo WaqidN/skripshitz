@@ -3,7 +3,6 @@ package com.example.abnormal.crimereport.activity.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +20,8 @@ public class ViewPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_post);
 
-        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbarPost);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("View Berita");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         judul = (TextView) findViewById(R.id.viewTitle);

@@ -2,7 +2,6 @@ package com.example.abnormal.crimereport.activity.admin;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.example.abnormal.crimereport.R;
@@ -22,8 +21,8 @@ public class ViewLapSelesai extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_lapselesai);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarView);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Laporan Selesai");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nama3 = (TextView) findViewById(R.id.view0);
         email3 = (TextView) findViewById(R.id.view1);
