@@ -33,13 +33,13 @@
             <item
                 android:id="@+id/navigation4"
                 android:checked="false"
-                android:icon="@mipmap/ic_setting"
-                android:title="@string/Setting" />
+                android:icon="@mipmap/ic_about"
+                android:title="@string/Bantuan" />
             <item
                 android:id="@+id/navigation5"
                 android:checked="false"
-                android:icon="@mipmap/ic_about"
-                android:title="@string/Bantuan" />
+                android:icon="@drawable/ic_info_black_36dp"
+                android:title="@string/Tentang" />
             <item
                 android:id="@+id/navigation6"
                 android:checked="false"

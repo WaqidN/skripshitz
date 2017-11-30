@@ -25,7 +25,7 @@
         android:id="@+id/newLap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add_white_36dp"
+        app:srcCompat="@android:drawable/ic_dialog_email"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

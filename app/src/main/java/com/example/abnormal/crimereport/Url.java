@@ -53,39 +53,7 @@ public class Url {
             String param = "type="+tipefile;
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
-            if(file != null){
-
-                dos.writeBytes("Content-Disposition: form-data; name=\"a_file\";filename=\""
-                        +file+"\""+lineEnd+"");
-
-                dos.writeBytes(lineEnd);
-
-                // create a buffer of  maximum size
-                bytesAvailable = fileInputStream.available();
-
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                buffer = new byte[bufferSize];
-
-                // read file and write it into form...
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-                while (bytesRead > 0) {
-                    dos.write(buffer, 0, bufferSize);
-                    bytesAvailable = fileInputStream.available();
-                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-                }
-                // send multipart form data necesssary after file data...
-                dos.writeBytes(lineEnd);
-                dos.writeBytes(twoHyphens + boundary + lineEnd);
-
-                dos.writeBytes("Content-Disposition: form-data; name=\"a_user\""+lineEnd+"");
-                dos.writeBytes(lineEnd);
-                dos.writeBytes(namauser);
-                dos.writeBytes(lineEnd);
-                dos.writeBytes(twoHyphens + boundary + lineEnd);
-
-            }
+            
             dos.writeBytes("Content-Disposition: form-data; name=\"a_nama\""+lineEnd+"");
             dos.writeBytes(lineEnd);
             dos.writeBytes(nama);

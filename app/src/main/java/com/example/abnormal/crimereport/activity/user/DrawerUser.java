@@ -19,7 +19,8 @@ import android.view.MenuItem;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.LoginActivity;
-import com.example.abnormal.crimereport.activity.admin.PostActivity;
+import com.example.abnormal.crimereport.activity.Bantuan;
+import com.example.abnormal.crimereport.activity.TentangAplikasi;
 import com.example.abnormal.crimereport.pojo.Keluar;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -108,7 +109,7 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         //initializing the fragment object which is selected
         switch (id) {
             case R.id.navigation1:
-                fragment = new PostActivity();
+                fragment = new PostUser();
                 break;
             case R.id.navigation2:
                 fragment = new LaporanUser();
@@ -117,10 +118,10 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
                 fragment = new UserEditProfile();
                 break;
             case R.id.navigation4:
-                //fragment = new PostActivity();
+                fragment = new Bantuan();
                 break;
             case R.id.navigation5:
-                //fragment = new EditProfil();
+                fragment = new TentangAplikasi();
                 break;
             case R.id.navigation6:
                 logOut();

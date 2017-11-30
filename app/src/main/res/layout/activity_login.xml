@@ -8,6 +8,26 @@
     tools:context="com.example.abnormal.crimereport.activity.LoginActivity">
 
     <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="217dp"
+        android:layout_height="177dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+    <LinearLayout
         android:id="@+id/scane1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -37,7 +37,7 @@
             android:id="@+id/keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="keyword"
             android:checked="true"/>
         <RadioButton
             android:id="@+id/web"
@@ -62,19 +62,26 @@
         android:layout_alignRight="@+id/lacak"
         android:layout_alignEnd="@+id/lacak" />
 
-    <LinearLayout
+   <LinearLayout
         android:layout_below="@+id/btnLacak"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="20dp">
 
 
+       <!---->
+       <!--<android.support.v7.widget.RecyclerView
+           android:id="@+id/listLacak"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:scrollbars="vertical"/>-->
+       <ListView
+           android:id="@+id/listLacak"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:scrollbars="vertical"/>
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

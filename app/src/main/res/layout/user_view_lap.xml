@@ -8,11 +8,8 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="fill_parent"
-        android:layout_height="470dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="20dp">
+        android:layout_height="match_parent"
+       android:layout_margin="20dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -22,7 +19,7 @@
                 android:id="@+id/lx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="10dp"
                 android:visibility="invisible"/>
 
             <EditText
@@ -68,15 +65,14 @@
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/custom_dialog"
-                android:paddingLeft="15dp"
-                android:paddingRight="10dp" />
+                android:gravity="top"/>
 
             <TextView
                 android:id="@+id/tmpilG"
                 android:layout_below="@+id/editr6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/ic_add"
+                android:drawableLeft="@drawable/ic_add"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"/>
 

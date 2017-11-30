@@ -122,6 +122,7 @@ public class NewReport extends ActionBarActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
+                //Toast.makeText(NewReport.this, "Pesan Terkirim", Toast.LENGTH_SHORT).show();
                 Intent hasil = new Intent(NewReport.this, DrawerAdmin.class);
                 startActivity(hasil);
                 finish();

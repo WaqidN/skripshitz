@@ -23,6 +23,8 @@ import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
 import com.example.abnormal.crimereport.pojo.Session;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,10 +92,20 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
                     Url.HttpUrl + "crimereport/post/newpost.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
-                    Intent send = new Intent(NewPOst.this, DrawerAdmin.class);
-                    startActivity(send);
-                    finish();
+                    try{
+                        JSONObject object = new JSONObject(response);
+                        String hasil = object.getString("hasil");
+                        if (hasil.equals("sukses")){
+                            Toast.makeText(NewPOst.this, "sukses", Toast.LENGTH_SHORT).show();
+                            Intent send = new Intent(NewPOst.this, DrawerAdmin.class);
+                            startActivity(send);
+                            finish();
+                        }else{
+                            Toast.makeText(NewPOst.this, object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(NewPOst.this, "Pastikan kolom terisi semua dan pilih category", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }, new Response.ErrorListener() {

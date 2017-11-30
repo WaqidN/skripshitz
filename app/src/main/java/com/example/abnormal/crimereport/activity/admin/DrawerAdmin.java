@@ -17,7 +17,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.Bantuan;
 import com.example.abnormal.crimereport.activity.LoginActivity;
+import com.example.abnormal.crimereport.activity.TentangAplikasi;
 import com.example.abnormal.crimereport.pojo.Keluar;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -113,13 +115,13 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
                 fragment = new EditProfil();
                 break;
             case R.id.A_nav6:
-                startActivity(new Intent(DrawerAdmin.this, LacakLaporan.class));
+                startActivity(new Intent(DrawerAdmin.this, LacakReport.class));
                 break;
             case R.id.A_nav7:
-                //startActivity(new Intent(AdminActivity.this, AboutActivity.class));
+                fragment = new Bantuan();
                 break;
             case R.id.A_nav8:
-                //startActivity(new Intent(AdminActivity.this, AboutActivity.class));
+                fragment = new TentangAplikasi();
                 break;
             case R.id.A_nav9:
                 logOut();

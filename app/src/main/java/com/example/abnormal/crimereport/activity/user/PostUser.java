@@ -58,7 +58,7 @@ public class PostUser extends Fragment{
         RecyclerView.LayoutManager recycleUser = new LinearLayoutManager(getContext());
         mRecyclerViewUser.setLayoutManager(recycleUser);
 
-        FloatingActionButton fabUser = (FloatingActionButton) getActivity().findViewById(R.id.newLapUser);
+        FloatingActionButton fabUser = (FloatingActionButton) getActivity().findViewById(R.id.newLapUL);
         fabUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -187,7 +187,5 @@ public class LapMasuk extends Fragment{
         public int getItemCount() {
             return this.datanya.size();
         }
-
-
     }
 }

@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText username,password;
     private RequestQueue requestQueue;
     private SharedPreferences sharedPreferences;
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.username);
 
         password = (EditText)findViewById(R.id.pass);
+
         final String token = FirebaseInstanceId.getInstance().getToken();
 
         Session session = new Session(this);
@@ -112,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                         stringMap.put("username",username.getText().toString());
                         stringMap.put("password",password.getText().toString());
                         stringMap.put("token",token);
+                        //stringMap.put("id_user",id);
                         return stringMap;
                     }
                 };

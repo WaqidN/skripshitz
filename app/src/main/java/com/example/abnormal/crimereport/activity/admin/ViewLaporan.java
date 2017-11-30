@@ -54,30 +54,13 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         namaV = (TextView) findViewById(R.id.view0);
 
         emailV = (TextView) findViewById(R.id.view1);
-        emailV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent emailV = new Intent(ViewLaporan.this, LacakLaporan.class );
-                //emailV.putExtra("email",)
-                startActivity(emailV);
-            }
-        });
         webV= (TextView) findViewById(R.id.view2);
-        webV.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         nohpV = (TextView) findViewById(R.id.view3);
         nohpV.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-
+                
             }
         });
         titleV = (TextView) findViewById(R.id.view5);
