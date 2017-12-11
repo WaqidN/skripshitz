@@ -1,5 +1,6 @@
 package com.example.abnormal.crimereport.pojo;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -12,9 +13,10 @@ import org.json.JSONObject;
 public class Session {
     private Context context;
     private SharedPreferences sharedPreferences;
+    @SuppressLint("WrongConstant")
     public Session(Context context){
         this.context            = context;
-        this.sharedPreferences  =  context.getSharedPreferences("akun",Context.MODE_APPEND);
+        this.sharedPreferences  = context.getSharedPreferences("akun", Context.MODE_APPEND);
     }
 
 

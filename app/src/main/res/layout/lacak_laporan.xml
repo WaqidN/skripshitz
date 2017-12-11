@@ -5,12 +5,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.abnormal.crimereport.activity.admin.LacakLaporan">
 
-    <include android:id="@+id/toolbarLacak"
-        layout="@layout/layout_toolbar"/>
-
     <TextView
         android:id="@+id/textLacak"
-        android:layout_below="@+id/toolbarLacak"
+        android:layout_below="@+id/toolbarlacak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -55,33 +52,30 @@
         android:id="@+id/btnLacak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/btn_login_bg"
-        android:textColor="@color/btn_login"
-        android:text="Lacak"
-        android:layout_alignTop="@+id/plhnPencarian"
+        android:layout_above="@+id/saveUrl"
+        android:layout_alignEnd="@+id/lacak"
         android:layout_alignRight="@+id/lacak"
-        android:layout_alignEnd="@+id/lacak" />
+        android:background="@color/btn_login_bg"
+        android:text="Lacak"
+        android:textColor="@color/btn_login" />
+
+    <Button
+        android:id="@+id/saveUrl"
+        android:layout_below="@+id/plhnPencarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Simpan"/>
 
    <LinearLayout
-        android:layout_below="@+id/btnLacak"
+        android:layout_below="@+id/saveUrl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
+        android:layout_height="match_parent">
 
-
-       <!---->
-       <!--<android.support.v7.widget.RecyclerView
-           android:id="@+id/listLacak"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:scrollbars="vertical"/>-->
-       <ListView
+       <android.support.v7.widget.RecyclerView
            android:id="@+id/listLacak"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:scrollbars="vertical"/>
-
     </LinearLayout>
-
-
 </RelativeLayout>

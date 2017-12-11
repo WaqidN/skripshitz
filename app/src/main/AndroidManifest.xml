@@ -23,31 +23,37 @@
             android:name=".activity.SignActivity"
             android:label="Register"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activity.admin.DrawerAdmin"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activity.user.DrawerUser"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".activity.admin.NewReport" />
+
         <activity
             android:name=".activity.admin.EditProfil"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".activity.SignFragOne" />
         <activity android:name=".activity.SignFragTwo" />
         <activity android:name=".activity.SignFragThree" />
+
         <activity android:name=".activity.admin.ViewLaporan" />
+
         <activity
             android:name=".activity.admin.PostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".activity.admin.ViewPost" />
+
         <activity android:name=".activity.admin.EditLaporan" />
-        <activity
-            android:name=".activity.admin.LacakLaporan"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.admin.LacakReport"
-            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.admin.LacakLaporan" />
+
         <activity
             android:name=".activity.admin.LapProsesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -73,7 +79,10 @@
         <activity android:name=".activity.TentangAplikasi" />
         <activity android:name=".activity.Bantuan" />
         <activity android:name=".activity.user.UserTentangAPlikasi" />
-        <activity android:name=".activity.user.UserBantuan"></activity>
+        <activity android:name=".activity.user.UserBantuan" />
+        <activity android:name=".activity.admin.DaftarWebSite"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.admin.ViewWeb"/>
     </application>
 
 </manifest>

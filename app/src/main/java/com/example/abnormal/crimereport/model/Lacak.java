@@ -6,23 +6,33 @@ package com.example.abnormal.crimereport.model;
 
 public class Lacak {
 
+    public String lacaktitle;
+
     public String getLacaktitle() {
-        return Lacaktitle;
+        return lacaktitle;
     }
 
     public void setLacaktitle(String lacaktitle) {
-        Lacaktitle = lacaktitle;
+        this.lacaktitle = lacaktitle;
     }
 
-    public String getLacakwebsite() {
-        return Lacakwebsite;
+    public String getLacakhost() {
+        return lacakhost;
     }
 
-    public void setLacakwebsite(String lacakwebsite) {
-        Lacakwebsite = lacakwebsite;
+    public void setLacakhost(String lacakhost) {
+        this.lacakhost = lacakhost;
     }
 
-    public String Lacaktitle;
-    public String Lacakwebsite;
+    public String getLacakFullLink() {
+        return lacakFullLink;
+    }
+
+    public void setLacakFullLink(String lacakFullLink) {
+        this.lacakFullLink = lacakFullLink;
+    }
+
+    public String lacakhost;
+    public String lacakFullLink;
 
 }

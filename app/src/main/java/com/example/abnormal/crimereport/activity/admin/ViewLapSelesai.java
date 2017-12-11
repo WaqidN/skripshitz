@@ -51,4 +51,10 @@ public class ViewLapSelesai extends AppCompatActivity {
         pict3.setText(picts);
         status3.setText("Laporan : "+statuss);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

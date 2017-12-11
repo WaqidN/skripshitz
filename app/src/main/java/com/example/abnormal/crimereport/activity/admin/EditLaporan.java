@@ -155,6 +155,8 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
                 }
             };
             requestQueue.add(stringRequest);
+        }else {
+            super.onBackPressed();
         }
         return true;
     }
@@ -164,5 +166,4 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         getMenuInflater().inflate(R.menu.actionbar_send, menu);
         return true;
     }
-
 }

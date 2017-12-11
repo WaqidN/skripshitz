@@ -11,35 +11,35 @@
     android:paddingRight="?listPreferredItemPaddingRight"
     android:paddingTop="@dimen/padding_list_row">
 
-    <TextView
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idp"
-        android:visibility="invisible"/>
-
+        android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/titleL"
-        android:layout_toRightOf="@+id/icon_container"
+        android:layout_toRightOf="@+id/checkBox"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="1"
+        android:text="Title : "
         android:textColor="@color/subject"
-        android:textSize="@dimen/msg_text_secondary"
-        android:textStyle="bold" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/websiteL"
         android:layout_below="@+id/title"
+        android:layout_toRightOf="@+id/checkBox"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="1"
+        android:text="Website : "
         android:textColor="@color/from"
-        android:textSize="@dimen/msg_text_primary"
-        android:textStyle="bold" />
+        android:textSize="@dimen/msg_text_primary" />
 
 </RelativeLayout>

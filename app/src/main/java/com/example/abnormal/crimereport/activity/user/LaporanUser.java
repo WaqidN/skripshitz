@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.user.callback.CallBackLapMasuk;
 import com.example.abnormal.crimereport.helper.DividerItemDecoration;
 import com.example.abnormal.crimereport.model.userM.Lap_View;
 import com.example.abnormal.crimereport.pojo.Session;
@@ -84,18 +85,20 @@ public class        LaporanUser extends Fragment {
 
     private void ambildata(String id) {
 
-        String Json = HttpUrl+"crimereport/laporan/user_lap.php?id="+id;
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Json, new Response.Listener<JSONObject>() {
+        CallBackLapMasuk lapMasuk = new CallBackLapMasuk(getContext());
+        lapMasuk.CallBackLapMasuk(id, new CallBackLapMasuk.LapMasukBack() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void hasil(String hasil) {
                 List<Lap_View> list = new ArrayList<>();
 
                 try {
-                    JSONArray jsonArray = response.getJSONArray("hasil");
-                    for (int a = 0; a < jsonArray.length(); a++) {
 
-                        JSONObject jsonObject = jsonArray.getJSONObject(a);
+                    JSONObject jsonObj = new JSONObject(hasil);
+                    JSONArray jaray = jsonObj.getJSONArray("hasil");
+
+                    for (int a = 0; a < jaray.length(); a++) {
+
+                        JSONObject jsonObject = jaray.getJSONObject(a);
                         Lap_View lap = new Lap_View();
                         lap.idUser = jsonObject.getString("id");
                         lap.namapelaku = jsonObject.getString("l_nama");
@@ -117,17 +120,9 @@ public class        LaporanUser extends Fragment {
 
                 SetAdapter adpter = new SetAdapter(list);
                 recyclerView.setAdapter(adpter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
-
-        requestQueue.add(jsonObjectRequest);
     }
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{

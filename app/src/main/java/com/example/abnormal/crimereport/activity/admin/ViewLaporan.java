@@ -1,7 +1,11 @@
 package com.example.abnormal.crimereport.activity.admin;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,12 +29,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     Spinner spinner1;
     TextView emailV, webV,nohpV,titleV,ketV, namaV,pictV;
-
     private String emailp,nohpp,webp,titlep,desp,statusp,namap,pictp;
+    private static FragmentManager fragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +57,17 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         spinner1.setAdapter(dataAdapter);
 
         namaV = (TextView) findViewById(R.id.view0);
-
+        namaV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewLaporan.this, LacakLaporan.class);
+                intent.putExtra("data", namap);
+                startActivity(intent);
+            }
+        });
         emailV = (TextView) findViewById(R.id.view1);
         webV= (TextView) findViewById(R.id.view2);
         nohpV = (TextView) findViewById(R.id.view3);
-        nohpV.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                
-            }
-        });
         titleV = (TextView) findViewById(R.id.view5);
         ketV = (TextView) findViewById(R.id.view6);
         pictV = (TextView) findViewById(R.id.tmpilG);
@@ -88,7 +93,6 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         } else {
             spinner1.setSelection(1);
         }
-
     }
 
     @Override
@@ -114,6 +118,8 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         if(item.getItemId() == R.id.action_user1){
 
             setStatus((String) spinner1.getSelectedItem(),getIntent().getStringExtra("id"));
+        }else {
+            super.onBackPressed();
         }
         return true;
     }
@@ -142,5 +148,11 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
             }
         };
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

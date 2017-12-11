@@ -80,14 +80,10 @@ public class EditPost extends AppCompatActivity {
                 }
             };
             requestQueue.add(stringRequest);
+        }else {
+            super.onBackPressed();
         }
         return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return super.onSupportNavigateUp();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.abnormal.crimereport.activity.admin;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -115,7 +116,12 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
                 fragment = new EditProfil();
                 break;
             case R.id.A_nav6:
-                startActivity(new Intent(DrawerAdmin.this, LacakReport.class));
+                Intent intent = new Intent(DrawerAdmin.this, LacakLaporan.class);
+                startActivity(intent);
+                //fragment = new LacakLaporan();
+                break;
+            case R.id.A_nav4:
+                fragment = new DaftarWebSite();
                 break;
             case R.id.A_nav7:
                 fragment = new Bantuan();
@@ -140,10 +146,6 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
     }
 
     public void logOut() {
-       /* SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
-        sharedPreferences.edit().clear().commit();
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        finish();*/
         final String token = FirebaseInstanceId.getInstance().getToken();
 
         new AsyncTask<Void, Void, String>() {
@@ -156,7 +158,7 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
 
             protected  void onPostExecute(String s){
                 super.onPostExecute(s);
-                SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+                @SuppressLint("WrongConstant") SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
                 sharedPreferences.edit().clear().commit();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();

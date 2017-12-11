@@ -34,6 +34,11 @@
             android:icon="@mipmap/ic_visible"
             android:title="@string/Lacak" />
         <item
+            android:id="@+id/A_nav4"
+            android:checked="false"
+            android:icon="@mipmap/ic_web"
+            android:title="Daftar WebSite" />
+        <item
             android:id="@+id/navigasi_kategori_2"
             android:title="@string/navigasi_kategori_2">
             <menu>

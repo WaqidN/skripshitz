@@ -2,7 +2,10 @@ package com.example.abnormal.crimereport.activity.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +39,7 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
     private Spinner spinnerP;
     private String category, iduser;
     private RequestQueue requestQueue;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,16 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerP.setAdapter(dataAdapter);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(NewPOst.this, DrawerAdmin.class);
+        startActivity(intent);
+
+        super.onBackPressed();
 
     }
 
@@ -127,5 +141,11 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

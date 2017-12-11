@@ -119,4 +119,10 @@ public class UserViewLap extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.actionbar_send, menu);
         return true;
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

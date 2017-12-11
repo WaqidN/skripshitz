@@ -7,10 +7,14 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +30,7 @@ public class NewReport extends ActionBarActivity {
     private String namaGambar;
     private Uri dataGambar;
     private TextView tmplPict;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,8 @@ public class NewReport extends ActionBarActivity {
                     1);
         }else if(item.getItemId() == R.id.action_user){
             kirimData();
+        }else {
+            super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -128,6 +135,21 @@ public class NewReport extends ActionBarActivity {
                 finish();
             }
         }.execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(NewReport.this, DrawerAdmin.class);
+        startActivity(intent);
+
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }
 

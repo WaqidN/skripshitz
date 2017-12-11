@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.user.callback.CallBackPost;
 import com.example.abnormal.crimereport.model.userM.Post_View;
 
 import org.json.JSONArray;
@@ -75,21 +76,18 @@ public class PostUser extends Fragment{
 
     private void ambildatanya() {
 
-        String Json = HttpUrl+"crimereport/post/viewpost.php";
-
-        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Json, new Response.Listener<JSONObject>() {
+        CallBackPost callBackPost = new CallBackPost(getContext());
+        callBackPost.CallBackPost(new CallBackPost.PostBack() {
             @Override
-            public void onResponse(JSONObject response) {
-
+            public void hasil(String hasil) {
                 List<Post_View> listv = new ArrayList<>();
 
-                Log.e("data", response.toString());
-
                 try {
-                    JSONArray jsonArray = response.getJSONArray("hasil");
+                    JSONObject jsonObj = new JSONObject(hasil);
+                    JSONArray jaray = jsonObj.getJSONArray("hasil");
 
-                    for (int a = 0; a<jsonArray.length(); a++){
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(a);
+                    for (int a = 0; a<jaray.length(); a++){
+                        JSONObject jsonObject1 = jaray.getJSONObject(a);
                         Post_View post = new Post_View();
                         post.idPU = jsonObject1.getString("id");
                         post.titlePU = jsonObject1.getString("post_title");
@@ -108,17 +106,7 @@ public class PostUser extends Fragment{
                 SetAdapter adapter = new SetAdapter(listv);
                 mRecyclerViewUser.setAdapter(adapter);
             }
-
-
-        }, new Response.ErrorListener(){
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
         });
-
-        requestQueue.add(jsonObjectRequest1);
     }
 
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{

@@ -33,4 +33,10 @@ public class UserViewPost extends AppCompatActivity {
         dateP.setText(datepostP);
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

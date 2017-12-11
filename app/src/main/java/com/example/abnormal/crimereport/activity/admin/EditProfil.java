@@ -1,5 +1,6 @@
 package com.example.abnormal.crimereport.activity.admin;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -68,6 +69,7 @@ public class EditProfil extends Fragment {
     }
 
 
+    @SuppressLint("WrongConstant")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

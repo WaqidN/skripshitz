@@ -55,6 +55,8 @@ public class ViewPost extends AppCompatActivity {
             intent.putExtra("titlenya", title);
             intent.putExtra("contentnya", content);
             startActivity(intent);
+        }else {
+            super.onBackPressed();
         }
         return true;
     }
