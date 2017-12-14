@@ -1,32 +1,19 @@
 package com.example.abnormal.crimereport.activity.admin;
 
-import android.annotation.SuppressLint;
-import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -50,11 +37,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,20 +53,19 @@ import java.util.regex.Pattern;
 public class LacakLaporan extends AppCompatActivity {
 
     RequestQueue requestQueue;
+    private List<Lacak> data = new ArrayList<>();
+
     private EditText lacak;
     private Button btnLacak,btnSimpan;
-    private RadioGroup radioGrup;
     private static RadioButton rb1,rb2,rb3;
     private RecyclerView recyclerView;
     private AdapterLacak mAdapter;
     private static final String TAG = "Http Connection";
     public static final int CONNECTION_TIMEOUT = 5000;
     public static final int READ_TIMEOUT = 15000;
-
-    int itemCount;
-    GestureDetectorCompat gestureDetector;
-    android.view.ActionMode actionMode;
-
+    String dataLacak = "";
+    String dataHost = "";
+    String dataLink = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,12 +111,71 @@ public class LacakLaporan extends AppCompatActivity {
                 }
             }
         });
+
+        btnSimpan = (Button) findViewById(R.id.saveUrl);
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                List<Lacak> stList = ((AdapterLacak) mAdapter)
+                        .getLacakist();
+
+                for (int i = 0; i < stList.size(); i++) {
+                    Lacak singleSelection = stList.get(i);
+                    if (singleSelection.isSelected() == true) {
+
+                        dataLacak = dataLacak + "\n" +singleSelection.getLacaktitle().toString();
+                        dataHost = dataHost + "\n" +singleSelection.getLacakhost().toString();
+                        dataLink = dataLacak + "\n" +singleSelection.getLacakFullLink().toString();
+
+                    }
+                }
+                /*Toast.makeText(LacakLaporan.this,
+                        "Selected URL: \n" + dataLacak, Toast.LENGTH_LONG)
+                        .show();*/
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                        Url.HttpUrl + "crimereport/website/lacak.php", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject object = new JSONObject(response);
+                            String hasil = object.getString("hasil");
+                            if (hasil.equals("sukses")){
+                                Toast.makeText(LacakLaporan.this, "sukses", Toast.LENGTH_SHORT).show();
+                                Intent send = new Intent(LacakLaporan.this, DrawerAdmin.class);
+                                startActivity(send);
+                                finish();
+                            }else{
+                                Toast.makeText(LacakLaporan.this, object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(LacakLaporan.this, "Pastikan kolom terisi semua dan pilih category", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LacakLaporan.this, "error "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> stringMap = new HashMap<>();
+                        stringMap.put("i_host",dataHost);
+                        stringMap.put("i_link",dataLink);
+                        stringMap.put("i_title",dataLacak);
+                        return stringMap;
+                    }
+                };
+                requestQueue.add(stringRequest);
+            }
+        });
     }
 
     private class JsonSearchTask extends AsyncTask<String, Void, Integer> {
 
         ProgressDialog pdLoading = new ProgressDialog(LacakLaporan.this);
-        List<Lacak> data = new ArrayList<>();
+
 
         @Override
         protected void onPreExecute() {
@@ -237,7 +280,7 @@ public class LacakLaporan extends AppCompatActivity {
                     JSONObject jsonObj = posts.optJSONObject(i);
                     Lacak lacak = new Lacak();
                     lacak.lacaktitle = jsonObj.getString("title");
-                    lacak.lacakhost = jsonObj.getString("displayLink");
+                    lacak.lacakhost = jsonObj.getString("formattedUrl");
                     lacak.lacakFullLink = jsonObj.getString("link");
                     data.add(lacak);
                 }
@@ -279,8 +322,6 @@ public class LacakLaporan extends AppCompatActivity {
             Integer result = 0;
 
             try {
-
-
 
                 String str = lacak.getText().toString();
 

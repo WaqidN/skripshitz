@@ -11,6 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,8 +139,8 @@ public class DaftarWebSite extends Fragment {
 
         @Override
         public void onBindViewHolder(SetAdapter.Holder holder, final int position) {
-            holder.title.setText(data.get(position).webJudul);
-            holder.host.setText(data.get(position).webHost);
+            holder.title.setText(Html.fromHtml(data.get(position).webJudul).toString().replace("\n","").trim());
+            holder.host.setText(Html.fromHtml(data.get(position).webHost).toString().replace("\n","").trim());
             holder.idnya.setText(data.get(position).webId);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

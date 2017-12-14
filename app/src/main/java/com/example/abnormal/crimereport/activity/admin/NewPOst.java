@@ -99,7 +99,7 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_user1) {
 
-             iduser = new Session(getApplicationContext()).getid();
+            iduser = new Session(getApplicationContext()).getid();
             category = spinnerP.getSelectedItem().toString();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST,

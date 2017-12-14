@@ -1,12 +1,14 @@
 package com.example.abnormal.crimereport.model;
 
+import java.io.Serializable;
+
 /**
  * Created by abnormal on 23/11/17.
  */
 
-public class Lacak {
+public class Lacak implements Serializable {
 
-    public String lacaktitle;
+    private static final long serialVersionUID = 1L;
 
     public String getLacaktitle() {
         return lacaktitle;
@@ -32,7 +34,18 @@ public class Lacak {
         this.lacakFullLink = lacakFullLink;
     }
 
+    public String lacaktitle;
     public String lacakhost;
     public String lacakFullLink;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    private boolean isSelected;
 
 }

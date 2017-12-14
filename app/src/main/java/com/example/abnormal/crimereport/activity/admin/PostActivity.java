@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,8 +138,8 @@ public class PostActivity extends Fragment {
         @Override
         public void onBindViewHolder(Holder holder, final int position) {
 
-            holder.judulnya.setText(datanya.get(position).titlePost);
-            holder.deskripsi.setText(datanya.get(position).contetPost);
+            holder.judulnya.setText(Html.fromHtml(datanya.get(position).titlePost).toString().replace("\n","").trim());
+            holder.deskripsi.setText(Html.fromHtml(datanya.get(position).contetPost).toString().replace("\n","").trim());
             //holder.time.setText(datanya.get(position).datePost);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

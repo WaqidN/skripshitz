@@ -1,6 +1,7 @@
 package com.example.abnormal.crimereport.pojo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
+import com.example.abnormal.crimereport.activity.admin.LacakLaporan;
+import com.example.abnormal.crimereport.activity.admin.ViewWeb;
 import com.example.abnormal.crimereport.model.Lacak;
 
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     int currentPos=0;
     private SparseBooleanArray selectedItems;
 
+
     public class MyHolder extends RecyclerView.ViewHolder  {
 
         TextView judulnya,websitenya;
@@ -42,13 +46,16 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             websitenya= (TextView) itemView.findViewById(R.id.websiteL);
             mChecked = (CheckBox) itemView.findViewById(R.id.checkBox);
         }
+
+        public void setOnClickListener(View.OnClickListener onClickListener) {
+            itemView.setOnClickListener(onClickListener);
+        }
     }
 
     public AdapterLacak(Context context, List<Lacak> data){
         this.mcontext=context;
         inflater= LayoutInflater.from(context);
         this.data=data;
-        selectedItems = new SparseBooleanArray();
     }
 
 
@@ -61,17 +68,42 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MyHolder myHolder = (MyHolder) holder;
-        Lacak current = data.get(position);
-        myHolder.judulnya.setText("Title : " + current.lacaktitle);
-        myHolder.websitenya.setText("Link : " + current.lacakhost);
+        final MyHolder myHolder = (MyHolder) holder;
+        final Lacak current = data.get(position);
+        final int pos = position;
 
-        myHolder.itemView.setActivated(selectedItems.get(position, false));
+        myHolder.judulnya.setText("Title : " + current.lacaktitle);
+        myHolder.websitenya.setText("Link  : " + current.lacakhost);
+
+        myHolder.mChecked.setChecked(data.get(position).isSelected());
+        myHolder.mChecked.setTag(data.get(position));
+
+       /* myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(mcontext, ViewWeb.class));
+            }
+        });*/
+
+        myHolder.mChecked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox cb = (CheckBox) v;
+                Lacak lacak = (Lacak) cb.getTag();
+
+                lacak.setSelected(cb.isChecked());
+                data.get(pos).setSelected(cb.isChecked());
+            }
+        });
 
     }
 
     @Override
     public int getItemCount()    {
         return (null != data ? data.size() : 0);
+    }
+
+    public List<Lacak> getLacakist() {
+        return data;
     }
 }

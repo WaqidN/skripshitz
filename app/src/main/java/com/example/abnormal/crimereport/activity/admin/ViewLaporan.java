@@ -65,9 +65,39 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
                 startActivity(intent);
             }
         });
+
         emailV = (TextView) findViewById(R.id.view1);
+        emailV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(ViewLaporan.this, LacakLaporan.class);
+                    intent.putExtra("data", emailp);
+                    startActivity(intent);
+
+            }
+        });
+
         webV= (TextView) findViewById(R.id.view2);
+        webV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewLaporan.this, LacakLaporan.class);
+                intent.putExtra("data", webp);
+                startActivity(intent);
+            }
+        });
+
         nohpV = (TextView) findViewById(R.id.view3);
+        nohpV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewLaporan.this, LacakLaporan.class);
+                intent.putExtra("data", nohpp);
+                startActivity(intent);
+            }
+        });
+
+
         titleV = (TextView) findViewById(R.id.view5);
         ketV = (TextView) findViewById(R.id.view6);
         pictV = (TextView) findViewById(R.id.tmpilG);

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,7 +51,8 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
         whost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(webHost)));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+webHost+"/"));
+                startActivity(browserIntent);
             }
         });
         wlink = (TextView) findViewById(R.id.webL);
@@ -69,12 +71,12 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
         webId = getIntent().getStringExtra("id");
         webTitle = getIntent().getStringExtra("judul");
         webHost = getIntent().getStringExtra("host");
-        webLink = getIntent().getStringExtra("full_link");
+        webLink = getIntent().getStringExtra("host");
         webStatus = getIntent().getStringExtra("status");
 
-        wjudul.setText(webTitle);
-        whost.setText(webHost);
-        wlink.setText(webLink);
+        wjudul.setText(Html.fromHtml(webTitle).toString().replace("\n","").trim());
+        whost.setText(Html.fromHtml(webHost).toString().replace("\n","").trim());
+        wlink.setText(Html.fromHtml("http://"+webLink+"/").toString().replace("\n","").trim());
 
         if (webStatus.equals("disimpan")){
             spinner.setSelection(0);
