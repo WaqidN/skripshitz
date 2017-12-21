@@ -120,7 +120,7 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         if(item.getItemId() == R.id.action_user1){
             status = spinner.getSelectedItem().toString();
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Url.HttpUrl + "/crimereport/laporan/editlaporan.php", new Response.Listener<String>() {
+                    Url.HttpUrl + "laporan/editlaporan.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

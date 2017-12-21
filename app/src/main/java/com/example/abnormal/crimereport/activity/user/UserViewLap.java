@@ -76,7 +76,7 @@ public class UserViewLap extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_user1){
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Url.HttpUrl + "crimereport/laporan/user_editlap.php", new Response.Listener<String>() {
+                    Url.HttpUrl + "laporan/user_editlap.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

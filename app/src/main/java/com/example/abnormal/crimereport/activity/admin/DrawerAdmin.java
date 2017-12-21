@@ -16,6 +16,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.Bantuan;
@@ -24,12 +28,19 @@ import com.example.abnormal.crimereport.activity.TentangAplikasi;
 import com.example.abnormal.crimereport.pojo.Keluar;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import org.json.JSONObject;
+
 public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbaradmin;
-    private NavigationView navigationViewAdmin;
+    private NavigationView navigationView;
     private DrawerLayout drawerLayoutAdmin;
+    private TextView txtName;
+    private View navHeader;
+    private SharedPreferences sharedPreferences;
+    private ImageView imageView, imageView1;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +49,8 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         toolbaradmin = (Toolbar) findViewById(R.id.toolbarAdmin);
         setSupportActionBar(toolbaradmin);
 
+        sharedPreferences = this.getSharedPreferences("akun", MODE_APPEND);
+
         drawerLayoutAdmin = (DrawerLayout) findViewById(R.id.drawerAdmin);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,13 +58,33 @@ public class DrawerAdmin extends AppCompatActivity implements NavigationView.OnN
         drawerLayoutAdmin.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_viewAdmin);
+        navigationView = (NavigationView) findViewById(R.id.navigation_viewAdmin);
         navigationView.setNavigationItemSelectedListener(this);
 
-            showHome();
+        navHeader = navigationView.getHeaderView(0);
+        txtName = (TextView) navHeader.findViewById(R.id.name);
+        imageView = (ImageView) navHeader.findViewById(R.id.foto);
+        //imageView1 = (ImageView)findViewById(R.id.foto1);
+
+        try {
+            JSONObject jsonObject = new JSONObject(sharedPreferences.getString("data", null));
+            txtName.setText(jsonObject.getString("user_username"));
+            String status = jsonObject.getString("user_jk");
+
+            if (status.equals("perempuan")){
+                imageView.setImageResource(R.drawable.icon_prmpan);
+            }else {
+                imageView.setImageResource(R.drawable.icon_laki);
+            }
+
+
+        }catch (Exception e){
+            Toast.makeText(DrawerAdmin.this, "error bro " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        showHome();
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

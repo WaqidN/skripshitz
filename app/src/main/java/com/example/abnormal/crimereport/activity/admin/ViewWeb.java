@@ -43,7 +43,7 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
 
         requestQueue = Volley.newRequestQueue(this);
 
-        getSupportActionBar().setTitle("Daftar Website");
+        getSupportActionBar().setTitle("View Website");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         wjudul = (TextView) findViewById(R.id.webT);
@@ -51,7 +51,7 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
         whost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+webHost+"/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+webHost));
                 startActivity(browserIntent);
             }
         });
@@ -71,12 +71,12 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
         webId = getIntent().getStringExtra("id");
         webTitle = getIntent().getStringExtra("judul");
         webHost = getIntent().getStringExtra("host");
-        webLink = getIntent().getStringExtra("host");
+        webLink = getIntent().getStringExtra("full_link");
         webStatus = getIntent().getStringExtra("status");
 
         wjudul.setText(Html.fromHtml(webTitle).toString().replace("\n","").trim());
         whost.setText(Html.fromHtml(webHost).toString().replace("\n","").trim());
-        wlink.setText(Html.fromHtml("http://"+webLink+"/").toString().replace("\n","").trim());
+        wlink.setText(Html.fromHtml(webLink).toString().replace("\n","").trim());
 
         if (webStatus.equals("disimpan")){
             spinner.setSelection(0);

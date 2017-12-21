@@ -14,20 +14,19 @@ import org.json.JSONObject;
 import static com.example.abnormal.crimereport.Url.HttpUrl;
 
 /**
- * Created by abnormal on 15/11/17.
+ * Created by abnormal on 20/12/17.
  */
 
-public class LapMasukCallBack  {
-
+public class PenipuCallBack {
     RequestQueue requestQueue;
-    String url = HttpUrl+"laporan/alllaporan.php";
+    String url = HttpUrl+"website/penipu.php";
 
-    public LapMasukCallBack(Context context){
+    public PenipuCallBack(Context context){
 
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    public void LapMasukCallBack(final LapMasukBack lapMasukBack){
+    public void PenipuCallBack (final PenipuCallBack.PenipuBack webBack){
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
             @Override
@@ -36,7 +35,7 @@ public class LapMasukCallBack  {
                 try {
 
                     Log.e("data", response.toString());
-                    lapMasukBack.hasil(response.toString());
+                    webBack.hasil(response.toString());
 
                 } catch (Exception e) {
 
@@ -52,7 +51,7 @@ public class LapMasukCallBack  {
         requestQueue.add(jsonObjectRequest);
 
     }
-    public interface LapMasukBack{
+    public interface PenipuBack{
         void hasil (String hasil);
     }
 }

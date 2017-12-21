@@ -103,7 +103,7 @@ public class NewPOst extends AppCompatActivity implements AdapterView.OnItemSele
             category = spinnerP.getSelectedItem().toString();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Url.HttpUrl + "crimereport/post/newpost.php", new Response.Listener<String>() {
+                    Url.HttpUrl + "post/newpost.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try{

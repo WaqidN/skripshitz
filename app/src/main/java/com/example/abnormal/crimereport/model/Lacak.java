@@ -38,6 +38,16 @@ public class Lacak implements Serializable {
     public String lacakhost;
     public String lacakFullLink;
 
+    public String getLacakDes() {
+        return lacakDes;
+    }
+
+    public void setLacakDes(String lacakDes) {
+        this.lacakDes = lacakDes;
+    }
+
+    public  String lacakDes;
+
     public boolean isSelected() {
         return isSelected;
     }

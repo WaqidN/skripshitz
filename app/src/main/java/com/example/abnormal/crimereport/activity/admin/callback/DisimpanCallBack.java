@@ -17,17 +17,17 @@ import static com.example.abnormal.crimereport.Url.HttpUrl;
  * Created by abnormal on 09/12/17.
  */
 
-public class WebCallBack {
+public class DisimpanCallBack {
 
     RequestQueue requestQueue;
-    String url = HttpUrl+"crimereport/website/website.php";
+    String url = HttpUrl+"website/disimpan.php";
 
-    public WebCallBack(Context context){
+    public DisimpanCallBack(Context context){
 
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    public void WebCallBack (final WebCallBack.WebBack webBack){
+    public void DisimpanCallBack (final DisimpanCallBack.WebBack webBack){
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, new Response.Listener<JSONObject>() {
             @Override

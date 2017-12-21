@@ -2,10 +2,7 @@ package com.example.abnormal.crimereport.activity.admin;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,17 +12,18 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.abnormal.crimereport.R;
-import com.example.abnormal.crimereport.activity.admin.callback.WebCallBack;
+import com.example.abnormal.crimereport.activity.admin.callback.DiperiksaCallBack;
+import com.example.abnormal.crimereport.activity.admin.callback.DisimpanCallBack;
+import com.example.abnormal.crimereport.activity.admin.callback.PenipuCallBack;
 import com.example.abnormal.crimereport.helper.DividerItemDecoration;
-import com.example.abnormal.crimereport.model.MProses;
-import com.example.abnormal.crimereport.model.MSelesai;
 import com.example.abnormal.crimereport.model.Web;
 
 import org.json.JSONArray;
@@ -34,11 +32,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaftarWebSite extends Fragment {
+public class DaftarWebSite extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private Toolbar toolbarproses;
     RequestQueue requestQueue;
     private RecyclerView recyclerView;
+    Button button, button1, button2;
 
     @Nullable
     @Override
@@ -64,20 +63,118 @@ public class DaftarWebSite extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
+        button = (Button) getActivity().findViewById(R.id.disimpan);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ambildatanya();
+
+            }
+        });
+
+        button1 = (Button) getActivity().findViewById(R.id.diperiksa);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ambildatadiperiksa();
+
+            }
+        });
+
+        button2 = (Button) getActivity().findViewById(R.id.penipu);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ambildatapenipu();
+            }
+        });
+
         ambildatanya();
 
+    }
+
+    private void ambildatapenipu() {
+
+        PenipuCallBack penipuCallBack = new PenipuCallBack(getContext());
+        penipuCallBack.PenipuCallBack(new PenipuCallBack.PenipuBack() {
+            @Override
+            public void hasil(String hasil) {
+                List<Web> list = new ArrayList<>();
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(hasil);
+                    JSONArray jsonArray = jsonObject.getJSONArray("hasil");
+
+                    for (int a = 0; a < jsonArray.length(); a++) {
+                        JSONObject jsonObj = jsonArray.getJSONObject(a);
+                        Web webb = new Web();
+                        webb.webId = jsonObj.getString("id");
+                        webb.webJudul = jsonObj.getString("si_title");
+                        webb.webHost = jsonObj.getString("si_host");
+                        webb.full_link = jsonObj.getString("si_full_url");
+                        webb.webStatus = jsonObj.getString("si_status");
+                        webb.webDate = jsonObj.getString("si_date");
+                        list.add(webb);
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                SetAdapter adapters = new SetAdapter(list);
+                recyclerView.setAdapter(adapters);
+            }
+        });
+    }
+
+    private void ambildatadiperiksa() {
+
+        DiperiksaCallBack diperiksaCallBack = new DiperiksaCallBack(getContext());
+        diperiksaCallBack.DiperiksaCallBack(new DiperiksaCallBack.DiperiksaBack() {
+            @Override
+            public void hasil(String hasil) {
+
+                List<Web> list = new ArrayList<>();
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(hasil);
+                    JSONArray jsonArray = jsonObject.getJSONArray("hasil");
+
+                    for (int a = 0; a < jsonArray.length(); a++) {
+                        JSONObject jsonObj = jsonArray.getJSONObject(a);
+                        Web webb = new Web();
+                        webb.webId = jsonObj.getString("id");
+                        webb.webJudul = jsonObj.getString("si_title");
+                        webb.webHost = jsonObj.getString("si_host");
+                        webb.full_link = jsonObj.getString("si_full_url");
+                        webb.webStatus = jsonObj.getString("si_status");
+                        webb.webDate = jsonObj.getString("si_date");
+                        list.add(webb);
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                SetAdapter adapters = new SetAdapter(list);
+                recyclerView.setAdapter(adapters);
+
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ambildatanya();
+
     }
 
     private void ambildatanya() {
 
-        WebCallBack webCallBack = new WebCallBack(getContext());
-        webCallBack.WebCallBack(new WebCallBack.WebBack() {
+        DisimpanCallBack webCallBack = new DisimpanCallBack(getContext());
+        webCallBack.DisimpanCallBack(new DisimpanCallBack.WebBack() {
             @Override
             public void hasil(String hasil) {
 
@@ -110,6 +207,16 @@ public class DaftarWebSite extends Fragment {
         });
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     class SetAdapter extends RecyclerView.Adapter<SetAdapter.Holder>{
 
         List<Web> data;
@@ -140,7 +247,7 @@ public class DaftarWebSite extends Fragment {
         @Override
         public void onBindViewHolder(SetAdapter.Holder holder, final int position) {
             holder.title.setText(Html.fromHtml(data.get(position).webJudul).toString().replace("\n","").trim());
-            holder.host.setText(Html.fromHtml(data.get(position).webHost).toString().replace("\n","").trim());
+            holder.host.setText(Html.fromHtml(data.get(position).full_link).toString().replace("\n","").trim());
             holder.idnya.setText(data.get(position).webId);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

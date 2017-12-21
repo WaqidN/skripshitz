@@ -18,10 +18,10 @@ import java.net.URL;
  */
 
 public class Url {
-    public static String HttpUrl = "http://192.168.88.14/";
-    public String uploadDocument(String file, Context context, Uri uri,
+    public static String HttpUrl = "https://onlinecrimereports.000webhostapp.com/";
+    public String uploadDocument(String dataGambar, Context context, Uri uri,
                                  String namauser,String nama,String email,String web,String nohp,
-                                 String namafile,String title,String keterangan){
+                                 String namaGambar,String title,String keterangan){
         HttpURLConnection conn = null;
         String tipefile = null;
         DataOutputStream dos = null;
@@ -33,7 +33,7 @@ public class Url {
         byte[] buffer;
         int maxBufferSize = 1 * 8024 * 8024;
         try {
-            URL url = new URL(HttpUrl+"crimereport/laporan/newlaporan.php");
+            URL url = new URL(HttpUrl+"laporan/newlaporan.php");
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoInput(true); // Allow Inputs
             conn.setDoOutput(true); // Allow Outputs
@@ -45,12 +45,36 @@ public class Url {
 
             dos = new DataOutputStream(conn.getOutputStream());
             FileInputStream fileInputStream=null;
-            File sourceFile = new File(Environment.getExternalStorageDirectory()+file);
+            File sourceFile = new File(Environment.getExternalStorageDirectory()+dataGambar);
             fileInputStream = (FileInputStream)
                     context.getContentResolver().openInputStream(uri);
             MimeTypeMap map = MimeTypeMap.getSingleton();
             tipefile = map.getExtensionFromMimeType(context.getContentResolver().getType(uri));
             String param = "type="+tipefile;
+            dos.writeBytes(twoHyphens + boundary + lineEnd);
+
+            dos.writeBytes("Content-Disposition: form-data; name=\"a_file\";name=\""
+                    +dataGambar+"\""+lineEnd+"");
+
+            dos.writeBytes(lineEnd);
+
+            // create a buffer of  maximum size
+            bytesAvailable = fileInputStream.available();
+
+            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+            buffer = new byte[bufferSize];
+
+            // read file and write it into form...
+            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+            while (bytesRead > 0) {
+                dos.write(buffer, 0, bufferSize);
+                bytesAvailable = fileInputStream.available();
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            }
+            // send multipart form data necesssary after file data...
+            dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 
             
@@ -89,7 +113,7 @@ public class Url {
 
             dos.writeBytes("Content-Disposition: form-data; name=\"a_file\""+lineEnd+"");
             dos.writeBytes(lineEnd);
-            dos.writeBytes(namafile);
+            dos.writeBytes(namaGambar);
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + lineEnd);
 

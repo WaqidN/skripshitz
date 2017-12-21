@@ -66,6 +66,9 @@ public class LacakLaporan extends AppCompatActivity {
     String dataLacak = "";
     String dataHost = "";
     String dataLink = "";
+    String dataHost1 = "";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +115,7 @@ public class LacakLaporan extends AppCompatActivity {
             }
         });
 
-        btnSimpan = (Button) findViewById(R.id.saveUrl);
+        /*btnSimpan = (Button) findViewById(R.id.saveUrl);
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,17 +127,18 @@ public class LacakLaporan extends AppCompatActivity {
                     Lacak singleSelection = stList.get(i);
                     if (singleSelection.isSelected() == true) {
 
-                        dataLacak = dataLacak + "\n" +singleSelection.getLacaktitle().toString();
-                        dataHost = dataHost + "\n" +singleSelection.getLacakhost().toString();
-                        dataLink = dataLacak + "\n" +singleSelection.getLacakFullLink().toString();
+                        dataLacak = singleSelection.getLacaktitle().toString();
+                        dataHost = singleSelection.getLacakhost().toString();
+                        dataHost1 = dataHost.replace("https://", "").replace("http://", "").replace("www.","");
+                        dataLink = singleSelection.getLacakFullLink().toString();
 
                     }
                 }
-                /*Toast.makeText(LacakLaporan.this,
+                *//*Toast.makeText(LacakLaporan.this,
                         "Selected URL: \n" + dataLacak, Toast.LENGTH_LONG)
-                        .show();*/
+                        .show();*//*
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                        Url.HttpUrl + "crimereport/website/lacak.php", new Response.Listener<String>() {
+                        Url.HttpUrl + "website/lacak.php", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try{
@@ -161,7 +165,8 @@ public class LacakLaporan extends AppCompatActivity {
                 }){
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String,String> stringMap = new HashMap<>();
-                        stringMap.put("i_host",dataHost);
+
+                        stringMap.put("i_host",dataHost1);
                         stringMap.put("i_link",dataLink);
                         stringMap.put("i_title",dataLacak);
                         return stringMap;
@@ -169,7 +174,7 @@ public class LacakLaporan extends AppCompatActivity {
                 };
                 requestQueue.add(stringRequest);
             }
-        });
+        });*/
     }
 
     private class JsonSearchTask extends AsyncTask<String, Void, Integer> {
@@ -282,6 +287,7 @@ public class LacakLaporan extends AppCompatActivity {
                     lacak.lacaktitle = jsonObj.getString("title");
                     lacak.lacakhost = jsonObj.getString("formattedUrl");
                     lacak.lacakFullLink = jsonObj.getString("link");
+
                     data.add(lacak);
                 }
             }catch (JSONException e){
@@ -300,6 +306,7 @@ public class LacakLaporan extends AppCompatActivity {
         String strSplit1 = null;
         String strSplit2 = null;
         String strTambah = null;
+        String strClean = null;
 
         String[] strArray;
 
@@ -327,7 +334,7 @@ public class LacakLaporan extends AppCompatActivity {
 
                 String abc = "";
                 final String strReplace = str.toLowerCase().replaceAll(" ", abc).replaceAll("-", abc);
-                final String strClean = strReplace.replace("+62", "0");
+                strClean = strReplace.replace("+62", "0");
 
                 if (strClean.length() == 12){
                     //membagi string
@@ -460,8 +467,24 @@ public class LacakLaporan extends AppCompatActivity {
 
             try{
 
-
-
+                /*if(strArray[0] == strClean){
+                    JSONObject response = new JSONObject(result);
+                    JSONArray posts = response.optJSONArray("items");
+                }else if (strArray[1] == strSplit){
+                    JSONObject response = new JSONObject(result);
+                    JSONArray posts = response.optJSONArray("items");
+                }else if (strArray[2] == strTambah){
+                    JSONObject response = new JSONObject(result);
+                    JSONArray posts = response.optJSONArray("items");
+                }else if (strArray[3] == strSplit1){
+                    JSONObject response = new JSONObject(result);
+                    JSONArray posts = response.optJSONArray("items");
+                }else if (strArray[4] == strSplit2){
+                    JSONObject response = new JSONObject(result);
+                    JSONArray posts = response.optJSONArray("items");
+                }else {
+                    Toast.makeText(LacakLaporan.this, "Pastikan manusakan anda benar", Toast.LENGTH_SHORT).show();
+                }*/
                 JSONObject response = new JSONObject(result);
                 JSONArray posts = response.optJSONArray("items");
 
@@ -471,7 +494,7 @@ public class LacakLaporan extends AppCompatActivity {
                     JSONObject jsonObj = posts.optJSONObject(i);
                     Lacak lacak = new Lacak();
                     lacak.lacaktitle = jsonObj.getString("title");
-                    lacak.lacakhost = jsonObj.getString("displayLink");
+                    lacak.lacakhost = jsonObj.getString("formattedUrl");
                     lacak.lacakFullLink = jsonObj.getString("link");
                     data.add(lacak);
                 }

@@ -20,7 +20,7 @@ import static com.example.abnormal.crimereport.Url.HttpUrl;
 public class LapProsesCallBack {
 
     RequestQueue requestQueue;
-    String url = HttpUrl+"crimereport/laporan/lap_proses.php";
+    String url = HttpUrl+"laporan/lap_proses.php";
 
     public LapProsesCallBack(Context context){
 

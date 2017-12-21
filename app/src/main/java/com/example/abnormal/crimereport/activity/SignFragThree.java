@@ -64,7 +64,7 @@ public class SignFragThree extends Fragment {
                     progressDialog.setMessage("Mohon Tunggu ...");
                     progressDialog.show();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                            Url.HttpUrl+"crimereport/user/register.php", new Response.Listener<String>() {
+                            Url.HttpUrl+"user/register.php", new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             progressDialog.dismiss();
@@ -75,7 +75,7 @@ public class SignFragThree extends Fragment {
                                     Toast.makeText(getContext(), "sukses", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getActivity(),LoginActivity.class);
                                     startActivity(intent);
-                                    getActivity();
+                                    getActivity().finish();
                                 }else{
                                     Toast.makeText(getContext(), object.getString("pesan"), Toast.LENGTH_SHORT).show();
                                 }

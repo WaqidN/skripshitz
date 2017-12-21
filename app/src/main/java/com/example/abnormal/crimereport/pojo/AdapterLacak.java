@@ -2,6 +2,7 @@ package com.example.abnormal.crimereport.pojo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.admin.LacakLaporan;
+import com.example.abnormal.crimereport.activity.admin.ViewLacak;
 import com.example.abnormal.crimereport.activity.admin.ViewWeb;
 import com.example.abnormal.crimereport.model.Lacak;
 
@@ -44,7 +46,7 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             super(itemView);
             judulnya= (TextView) itemView.findViewById(R.id.titleL);
             websitenya= (TextView) itemView.findViewById(R.id.websiteL);
-            mChecked = (CheckBox) itemView.findViewById(R.id.checkBox);
+            //mChecked = (CheckBox) itemView.findViewById(R.id.checkBox);
         }
 
         public void setOnClickListener(View.OnClickListener onClickListener) {
@@ -67,25 +69,32 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final MyHolder myHolder = (MyHolder) holder;
         final Lacak current = data.get(position);
         final int pos = position;
 
         myHolder.judulnya.setText("Title : " + current.lacaktitle);
-        myHolder.websitenya.setText("Link  : " + current.lacakhost);
+        myHolder.websitenya.setText("Link  : " + current.lacakFullLink);
 
-        myHolder.mChecked.setChecked(data.get(position).isSelected());
-        myHolder.mChecked.setTag(data.get(position));
-
-       /* myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*myHolder.mChecked.setChecked(data.get(position).isSelected());
+        myHolder.mChecked.setTag(data.get(position));*/
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(mcontext, ViewWeb.class));
-            }
-        });*/
 
-        myHolder.mChecked.setOnClickListener(new View.OnClickListener() {
+                /*Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(current.getLacakhost()));
+                v.getContext().startActivity(browserIntent);*/
+                Intent intent = new Intent(mcontext, ViewLacak.class);
+                intent.putExtra("title",data.get(position).lacaktitle);
+                intent.putExtra("host", data.get(position).lacakhost);
+                intent.putExtra("link", data.get(position).lacakFullLink);
+                mcontext.startActivity(intent);
+
+            }
+        });
+
+        /*myHolder.mChecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CheckBox cb = (CheckBox) v;
@@ -94,7 +103,7 @@ public class AdapterLacak extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 lacak.setSelected(cb.isChecked());
                 data.get(pos).setSelected(cb.isChecked());
             }
-        });
+        });*/
 
     }
 

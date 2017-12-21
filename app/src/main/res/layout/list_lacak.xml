@@ -11,10 +11,10 @@
     android:paddingRight="?listPreferredItemPaddingRight"
     android:paddingTop="@dimen/padding_list_row">
 
-    <CheckBox
+    <!--<CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
     <TextView
         android:id="@+id/titleL"
         android:layout_toRightOf="@+id/checkBox"

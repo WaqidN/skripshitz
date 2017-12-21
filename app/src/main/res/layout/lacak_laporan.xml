@@ -52,25 +52,27 @@
         android:id="@+id/btnLacak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/saveUrl"
+        android:layout_below="@+id/lacak"
         android:layout_alignEnd="@+id/lacak"
         android:layout_alignRight="@+id/lacak"
         android:background="@color/btn_login_bg"
         android:text="Lacak"
-        android:textColor="@color/btn_login" />
+        android:textColor="@color/btn_login"
+        android:layout_marginTop="18dp"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/saveUrl"
         android:layout_below="@+id/plhnPencarian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Simpan"/>
+        android:text="Simpan"/>-->
 
    <LinearLayout
-        android:layout_below="@+id/saveUrl"
+        android:layout_below="@+id/btnLacak"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+       android:layout_marginTop="15dp">
 
        <android.support.v7.widget.RecyclerView
            android:id="@+id/listLacak"

@@ -155,7 +155,7 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
     }
 
     public void setStatus(final String status, final String idp){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "/crimereport/laporan/edit_status_lap.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "laporan/edit_status_lap.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 

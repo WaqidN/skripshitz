@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage("Mohong tunggu ...");
                 progressDialog.show();;
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                        Url.HttpUrl+"crimereport/user/login.php", new Response.Listener<String>() {
+                        Url.HttpUrl+"user/login.php", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();

@@ -56,7 +56,7 @@ public class EditPost extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_user1){
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Url.HttpUrl + "crimereport/post/edit_post.php", new Response.Listener<String>() {
+                    Url.HttpUrl + "post/edit_post.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 

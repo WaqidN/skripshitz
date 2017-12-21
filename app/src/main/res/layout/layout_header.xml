@@ -12,21 +12,31 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:padding="30dp"
-        android:src="@drawable/icon_profil"
+        android:src="@drawable/icon_laki"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    <!--<ImageView
+        android:id="@+id/foto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="30dp"
+        android:src="@drawable/icon_prmpan"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />-->
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Waqid N"
-        android:textSize="20dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/foto"
-        android:layout_alignRight="@+id/foto"
-        android:layout_alignEnd="@+id/foto"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:text="Waqid N"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>

@@ -151,7 +151,7 @@ public class EditProfil extends Fragment {
         if (item.getItemId() == R.id.action_user1) {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Url.HttpUrl + "crimereport/user/editprofile.php", new Response.Listener<String>() {
+                    Url.HttpUrl + "user/editprofile.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

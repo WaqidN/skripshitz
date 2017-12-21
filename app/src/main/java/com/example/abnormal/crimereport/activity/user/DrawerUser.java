@@ -1,5 +1,6 @@
 package com.example.abnormal.crimereport.activity.user;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +17,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.activity.LoginActivity;
 import com.example.abnormal.crimereport.activity.Bantuan;
 import com.example.abnormal.crimereport.activity.TentangAplikasi;
+import com.example.abnormal.crimereport.activity.admin.DrawerAdmin;
 import com.example.abnormal.crimereport.pojo.Keluar;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.json.JSONObject;
 
 /**
  * Created by abnormal on 20/07/17.
@@ -37,11 +45,18 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Utama";
+    private TextView txtName;
+    private View navHeader;
+    private SharedPreferences sharedPreferences;
+    private ImageView imageView;
 
 
+    @SuppressLint("WrongConstant")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_drawer_activity);
+
+        sharedPreferences = this.getSharedPreferences("akun", MODE_APPEND);
 
         toolbar = (Toolbar) findViewById(R.id.toolbarUser);
         setSupportActionBar(toolbar);
@@ -53,8 +68,27 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_viewUser);
+        navigationView = (NavigationView) findViewById(R.id.navigation_viewUser);
         navigationView.setNavigationItemSelectedListener(this);
+
+        navHeader = navigationView.getHeaderView(0);
+        txtName = (TextView) navHeader.findViewById(R.id.name);
+        imageView = (ImageView) navHeader.findViewById(R.id.foto);
+
+        try {
+            JSONObject jsonObject = new JSONObject(sharedPreferences.getString("data", null));
+            txtName.setText(jsonObject.getString("user_username"));
+            String status = jsonObject.getString("user_jk");
+
+            if (status.equals("perempuan")){
+                imageView.setImageResource(R.drawable.icon_prmpan);
+            }else {
+                imageView.setImageResource(R.drawable.icon_laki);
+            }
+
+        }catch (Exception e){
+            Toast.makeText(DrawerUser.this, "error bro " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
         showHome();
 
