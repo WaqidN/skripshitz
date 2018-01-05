@@ -100,7 +100,7 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
 
         titleV = (TextView) findViewById(R.id.view5);
         ketV = (TextView) findViewById(R.id.view6);
-        pictV = (TextView) findViewById(R.id.tmpilG);
+        //pictV = (TextView) findViewById(R.id.tmpilG);
 
         namap = getIntent().getStringExtra("pelakunya");
         emailp = getIntent().getStringExtra("emailp");
@@ -117,7 +117,7 @@ public class ViewLaporan extends AppCompatActivity implements AdapterView.OnItem
         nohpV.setText(nohpp);
         titleV.setText(titlep);
         ketV.setText(desp);
-        pictV.setText(pictp);
+        //pictV.setText(pictp);
         if (statusp.equals("proses")){
             spinner1.setSelection(0);
         } else {

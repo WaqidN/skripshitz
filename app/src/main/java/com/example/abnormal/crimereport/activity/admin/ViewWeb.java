@@ -107,7 +107,7 @@ public class ViewWeb extends AppCompatActivity implements AdapterView.OnItemSele
         if(item.getItemId() == R.id.action_user1){
 
             webStatus = spinner.getSelectedItem().toString();
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "/crimereport/website/edit_situs.php", new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.HttpUrl + "website/edit_situs.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 

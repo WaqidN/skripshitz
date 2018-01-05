@@ -68,13 +68,14 @@
                 android:gravity="top"/>
 
             <TextView
-                android:id="@+id/tmpilG"
+                android:id="@+id/tmpilSta"
                 android:layout_below="@+id/editr6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_add"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textSize="13dp"
+                android:textStyle="bold"/>
 
         </RelativeLayout>
 

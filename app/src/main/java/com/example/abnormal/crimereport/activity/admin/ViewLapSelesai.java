@@ -31,7 +31,7 @@ public class ViewLapSelesai extends AppCompatActivity {
         title3 = (TextView) findViewById(R.id.view5);
         ket3 = (TextView) findViewById(R.id.view6);
         status3 = (TextView) findViewById(R.id.liats);
-        pict3 = (TextView) findViewById(R.id.tmpilG);
+        // = (TextView) findViewById(R.id.tmpilG);
 
         namas = getIntent().getStringExtra("pelakunya");
         emails = getIntent().getStringExtra("emails");
@@ -48,7 +48,7 @@ public class ViewLapSelesai extends AppCompatActivity {
         nohp3.setText(nohps);
         title3.setText(titles);
         ket3.setText(dess);
-        pict3.setText(picts);
+        //pict3.setText(picts);
         status3.setText("Laporan : "+statuss);
     }
 

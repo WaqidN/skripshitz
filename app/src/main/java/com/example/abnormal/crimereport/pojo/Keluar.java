@@ -21,7 +21,7 @@ public class Keluar {
 
         try {
 
-            String kon = Url.HttpUrl+"crimereport/user/keluar.php";
+            String kon = Url.HttpUrl+"user/keluar.php";
             URL obj = new URL(kon);
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setConnectTimeout(5000);
@@ -48,9 +48,9 @@ public class Keluar {
         }
     }
 
-    public String removeToken (String token){
+    /*public String removeToken (String token){
         try {
-            String url = Url.HttpUrl+"crimereport/user/keluar.php";
+            String url = Url.HttpUrl+"user/keluar.php";
 
             URL ob = new URL(url);
 
@@ -78,5 +78,5 @@ public class Keluar {
         }catch (Exception e) {
             return e.getMessage();
         }
-    }
+    }*/
 }

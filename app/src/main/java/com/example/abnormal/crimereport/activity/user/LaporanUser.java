@@ -109,6 +109,7 @@ public class        LaporanUser extends Fragment {
                         lap.nohpUser = jsonObject.getString("l_nohp");
                         lap.emailUser = jsonObject.getString("l_email");
                         lap.websiteUser = jsonObject.getString("l_website");
+                        lap.statusUser = jsonObject.getString("l_status");
                         lap.pictUser = jsonObject.getString("l_file");
                         list.add(lap);
 
@@ -187,6 +188,7 @@ public class        LaporanUser extends Fragment {
                     intent.putExtra("nohp", datanya.get(position).nohpUser);
                     intent.putExtra("title", datanya.get(position).titleUser);
                     intent.putExtra("des", datanya.get(position).deskUser);
+                    intent.putExtra("status", datanya.get(position).statusUser);
                     intent.putExtra("pict", datanya.get(position).pictUser);
                     startActivity(intent);
                 }

@@ -28,8 +28,8 @@ import java.util.Map;
 public class UserViewLap extends AppCompatActivity {
 
 
-    EditText email1, web1,nohp1,title1,ket1,nama1,id1;
-    TextView pict1;
+    EditText email1, web1,nohp1,title1,ket1,nama1;
+    TextView pict1,status1;
     private RequestQueue requestQueue;
 
     private String email,nohp,web,title,des,status, nama, pict,idm;
@@ -50,7 +50,8 @@ public class UserViewLap extends AppCompatActivity {
         nohp1 = (EditText) findViewById(R.id.editr4);
         title1 = (EditText) findViewById(R.id.editr5);
         ket1 = (EditText) findViewById(R.id.editr6);
-        pict1 = (TextView) findViewById(R.id.tmpilG);
+        status1 = (TextView) findViewById(R.id.tmpilSta);
+        //pict1 = (TextView) findViewById(R.id.tmpilG);
 
         Bundle extras = getIntent().getExtras();
         idm = extras.getString("idnya");
@@ -60,6 +61,7 @@ public class UserViewLap extends AppCompatActivity {
         nohp = extras.getString("nohp");
         title = extras.getString("title");
         des = extras.getString("des");
+        status = extras.getString("status");
         pict = extras.getString("pict");
 
         nama1.setText(nama);
@@ -68,7 +70,8 @@ public class UserViewLap extends AppCompatActivity {
         nohp1.setText(nohp);
         title1.setText(title);
         ket1.setText(des);
-        pict1.setText(pict);
+        status1.setText("Status Laporan : "+status);
+        //pict1.setText(pict);
     }
 
 

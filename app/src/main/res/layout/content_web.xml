@@ -8,16 +8,17 @@
     >
 
 
-
     <Button
         android:id="@+id/disimpan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="35dp"
-        android:text="Disimpan"/>
+        android:layout_alignBaseline="@+id/diperiksa"
+        android:layout_alignBottom="@+id/diperiksa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:text="Disimpan" />
 
     <Button
         android:id="@+id/diperiksa"
@@ -31,9 +32,10 @@
         android:id="@+id/penipu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/recyclerView"
+        android:layout_toEndOf="@+id/diperiksa"
         android:layout_toRightOf="@+id/diperiksa"
-        android:layout_margin="15dp"
-        android:text="Penipu"/>
+        android:text="Penipu" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

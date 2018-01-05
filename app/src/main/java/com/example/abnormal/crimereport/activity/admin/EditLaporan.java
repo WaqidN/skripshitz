@@ -73,7 +73,7 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         nohp1 = (EditText) findViewById(R.id.editr4);
         title1 = (EditText) findViewById(R.id.editr5);
         ket1 = (EditText) findViewById(R.id.editr6);
-        pict1 = (TextView) findViewById(R.id.tmpilG);
+        //pict1 = (TextView) findViewById(R.id.tmpilG);
 
         Bundle extras = getIntent().getExtras();
         idm = extras.getString("idnya");
@@ -92,7 +92,7 @@ public class EditLaporan extends AppCompatActivity implements AdapterView.OnItem
         nohp1.setText(nohp);
         title1.setText(title);
         ket1.setText(des);
-        pict1.setText(pict);
+        //pict1.setText(pict);
 
         if(status.equals("masuk")){
             spinner.setSelection(0);
