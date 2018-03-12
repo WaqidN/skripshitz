@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.abnormal.crimereport.R;
 import com.example.abnormal.crimereport.Url;
+import com.example.abnormal.crimereport.activity.admin.DrawerAdmin;
+import com.example.abnormal.crimereport.activity.admin.NewReport;
 import com.example.abnormal.crimereport.pojo.Session;
 
 /**
@@ -65,6 +67,8 @@ public class NewLapUser extends ActionBarActivity {
                     1);
         }else if(item.getItemId() == R.id.action_user){
             kirimData();
+        }else {
+            super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -132,5 +136,20 @@ public class NewLapUser extends ActionBarActivity {
                 finish();
             }
         }.execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(NewLapUser.this, DrawerUser.class);
+        startActivity(intent);
+
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

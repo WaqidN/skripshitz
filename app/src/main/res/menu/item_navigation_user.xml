@@ -12,6 +12,11 @@
             android:icon="@mipmap/ic_laporan"
             android:title="@string/Lap_user" />
         <item
+            android:id="@+id/navigation7"
+            android:checked="false"
+            android:icon="@mipmap/ic_listpenipu"
+            android:title="Web Penipu" />
+        <item
             android:id="@+id/navigation3"
             android:checked="false"
             android:icon="@mipmap/ic_profil"

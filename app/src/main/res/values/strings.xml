@@ -7,14 +7,14 @@
     <string name="Laporan">Laporan Masuk</string>
     <string name="Lap_Proses">Laporan Proses</string>
     <string name="Lap_Selesai">Laporan Selesai</string>
-    <string name="My_Profil">Edit User</string>
+    <string name="My_Profil">Edit Profile</string>
     <string name="Media">Media</string>
     <string name="navigasi_kategori_2">Sub Item Navigasi</string>
     <string name="Tentang">Tentang Aplikasi</string>
     <string name="Bantuan">Bantuan</string>
     <string name="Logout">Log Out</string>
     <string name="Post">Post</string>
-    <string name="Edit_User">Edit User</string>
+    <string name="Edit_User">Edit Profile</string>
     <string name="Lacak">Lacak</string>
     <string name="one">Lap.Masuk</string>
     <string name="two">Lap.Proses</string>

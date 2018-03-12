@@ -84,6 +84,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.admin.ViewWeb"/>
         <activity android:name=".activity.admin.ViewLacak"/>
+        <activity android:name=".activity.user.List_Penipu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.user.View_Penipu"/>
+
+        <activity android:name=".activity.admin.DFdiperiksa"/>
+        <activity android:name=".activity.admin.DFdisimpan"/>
+        <activity android:name=".activity.admin.DFpenipu"/>
     </application>
 
 </manifest>

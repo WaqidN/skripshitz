@@ -466,25 +466,7 @@ public class LacakLaporan extends AppCompatActivity {
             pdLoading.dismiss();
 
             try{
-
-                /*if(strArray[0] == strClean){
-                    JSONObject response = new JSONObject(result);
-                    JSONArray posts = response.optJSONArray("items");
-                }else if (strArray[1] == strSplit){
-                    JSONObject response = new JSONObject(result);
-                    JSONArray posts = response.optJSONArray("items");
-                }else if (strArray[2] == strTambah){
-                    JSONObject response = new JSONObject(result);
-                    JSONArray posts = response.optJSONArray("items");
-                }else if (strArray[3] == strSplit1){
-                    JSONObject response = new JSONObject(result);
-                    JSONArray posts = response.optJSONArray("items");
-                }else if (strArray[4] == strSplit2){
-                    JSONObject response = new JSONObject(result);
-                    JSONArray posts = response.optJSONArray("items");
-                }else {
-                    Toast.makeText(LacakLaporan.this, "Pastikan manusakan anda benar", Toast.LENGTH_SHORT).show();
-                }*/
+                
                 JSONObject response = new JSONObject(result);
                 JSONArray posts = response.optJSONArray("items");
 

@@ -148,6 +148,9 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
             case R.id.navigation2:
                 fragment = new LaporanUser();
                 break;
+            case R.id.navigation7:
+                fragment = new List_Penipu();
+                break;
             case R.id.navigation3:
                 fragment = new UserEditProfile();
                 break;
@@ -190,7 +193,7 @@ public class DrawerUser extends AppCompatActivity implements NavigationView.OnNa
 
             protected  void onPostExecute(String s){
                 super.onPostExecute(s);
-                SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
+                @SuppressLint("WrongConstant") SharedPreferences sharedPreferences = getSharedPreferences("akun", MODE_APPEND);
                 sharedPreferences.edit().clear().commit();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();

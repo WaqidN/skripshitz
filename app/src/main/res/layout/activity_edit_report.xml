@@ -12,6 +12,10 @@
         android:layout_below="@+id/toolbar1"
         android:layout_margin="20dp">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -23,40 +27,98 @@
                 android:layout_margin="10dp"
                 android:visibility="invisible"/>
 
+            <TextView
+                android:id="@+id/A2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/A1"
+                android:text="Nama Pelaku"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <EditText
                 android:id="@+id/editr1"
-                android:layout_below="@+id/A1"
+                android:layout_below="@+id/A2"
                 android:hint="Nama"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
 
+            <TextView
+                android:id="@+id/A3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editr1"
+                android:text="Email"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <EditText
                 android:id="@+id/editr2"
-                android:layout_below="@id/editr1"
+                android:layout_below="@id/A3"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
+
+            <TextView
+                android:id="@+id/A4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editr2"
+                android:text="Website"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <EditText
                 android:id="@+id/editr3"
                 android:hint="Web"
                 android:inputType="textWebEditText"
-                android:layout_below="@+id/editr2"
+                android:layout_below="@+id/A4"
                 style="@style/custom_forms"/>
+
+            <TextView
+                android:id="@+id/A5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editr3"
+                android:text="No Telephone"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <EditText
                 android:id="@+id/editr4"
                 android:hint="No.Tlphn"
                 android:inputType="phone"
-                android:layout_below="@+id/editr3"
+                android:layout_below="@+id/A5"
                 style="@style/custom_forms"/>
+
+            <TextView
+                android:id="@+id/A6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editr4"
+                android:text="Judul Laporan"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <EditText
                 android:id="@+id/editr5"
                 android:hint="Judul Lap"
                 android:inputType="text"
-                android:layout_below="@+id/editr4"
+                android:layout_below="@+id/A6"
                 style="@style/custom_forms"/>
+
+            <TextView
+                android:id="@+id/A7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editr5"
+                android:text="Keterangan"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"/>
+
             <LinearLayout
                 android:id="@+id/edit"
-                android:layout_below="@id/editr5"
+                android:layout_below="@id/A7"
                 android:layout_width="match_parent"
                 android:layout_height="75dp">
                 <EditText
@@ -69,15 +131,25 @@
                     android:gravity="top|left"/>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/A8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit"
+                android:text="Status Laporan"
+                android:textSize="13dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"/>
+
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:prompt="@string/spinner_title"
-                android:layout_below="@+id/edit"
+                android:layout_below="@+id/A8"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="3dp"/>
 
             <TextView
                 android:id="@+id/tmpilG"
@@ -90,6 +162,8 @@
             <!--android:drawableLeft="@drawable/ic_add"-->
 
         </RelativeLayout>
+
+        </ScrollView>
 
     </android.support.v7.widget.CardView>
 

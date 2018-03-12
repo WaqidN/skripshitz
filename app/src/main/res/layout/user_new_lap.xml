@@ -25,14 +25,14 @@
             <EditText
                 android:id="@+id/nr1"
                 android:layout_below="@+id/lb"
-                android:hint="Nama"
+                android:hint="Nama Pelaku"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
 
             <EditText
                 android:id="@+id/nr2"
                 android:layout_below="@+id/nr1"
-                android:hint="Email"
+                android:hint="Email Pelaku"
                 android:inputType="textEmailAddress"
                 style="@style/custom_forms"/>
 
@@ -45,7 +45,7 @@
 
             <EditText
                 android:id="@+id/nr4"
-                android:hint="No.Tlphn"
+                android:hint="No.Telephone pelaku"
                 android:inputType="phone"
                 android:layout_below="@+id/nr3"
                 style="@style/custom_forms"/>
@@ -71,8 +71,18 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tmplG"
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll"
+                android:text="Unggah gambar dengan klik icon papper clip diatas"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/tmplG"
+                android:layout_below="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
